@@ -1,0 +1,24 @@
+{
+  "name": "KLMS VOD Controller",
+  "version": "0.0",
+  "manifest_version": 2,
+  "description": "Keyboard control support for KLMS VODs. ",
+  "homepage_url": "https://github.com/GunheeYi",
+  "content_scripts": [{
+    "js": ["contentscript.js"],
+    "matches": ["http://klms.kaist.ac.kr/mod/vod/*"]
+  }],
+  "page_action": {
+    "default_icon": {
+      "16": "images/favicon.png"
+    }
+  },
+  "icons": {
+    "16": "images/favicon.png"
+  },
+  "web_accessible_resources": ["script.js"],
+  "permissions": [
+    "http://klms.kaist.ac.kr/*",
+    "https://klms.kaist.ac.kr/*"
+  ]
+}
