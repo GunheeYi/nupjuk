@@ -1,6 +1,6 @@
 {
   "name": "KLMS VOD Controller",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 2,
   "description": "Keyboard control support for KLMS VODs.",
   "homepage_url": "https://github.com/GunheeYi/klms_vod_controller",
