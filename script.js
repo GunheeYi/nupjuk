@@ -20,5 +20,19 @@ document.addEventListener('keydown', function (event) {
     case "9":
       jwplayer().seek(jwplayer().getDuration()/10*Number(event.key));
       break;
+    case 'z':
+      document.getElementsByTagName('video')[0].playbackRate = 1;
+      document.getElementsByClassName('player-speed')[0].innerHTML = "1.0x";
+      break;
+    case 'x':
+      document.getElementsByTagName('video')[0].playbackRate -= 0.2;
+      s = document.getElementsByTagName('video')[0].playbackRate;
+      document.getElementsByClassName('player-speed')[0].innerHTML = String(Math.round(s*10)/10) + "x";
+      break;
+    case 'c':
+      document.getElementsByTagName('video')[0].playbackRate += 0.2;
+      s = document.getElementsByTagName('video')[0].playbackRate;
+      document.getElementsByClassName('player-speed')[0].innerHTML = String(Math.round(s*10)/10) + "x";
+      break;
   }
 });
