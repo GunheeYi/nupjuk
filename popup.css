@@ -1,0 +1,6 @@
+/* Written by 2021 Gunhee Yi (gunny@kaist.ac.kr). */
+
+.invalid {
+    border: 2px solid red;
+    border-radius: 3px;
+}

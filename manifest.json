@@ -1,23 +1,37 @@
 {
-  "name": "KLMS VOD Controller",
-  "version": "0.2",
+  "name": "Nupjuk!",
+  "version": "2.0",
   "manifest_version": 2,
   "description": "Keyboard control support for KLMS VODs.",
   "homepage_url": "https://github.com/GunheeYi/klms_vod_controller",
   "content_scripts": [{
-    "js": ["contentscript.js"],
-    "matches": ["http://klms.kaist.ac.kr/mod/vod/*"]
+    "js": ["shared.js", "contentscript.js"],
+    "matches": [
+      "http://iam2.kaist.ac.kr/*",
+      "https://iam2.kaist.ac.kr/*",
+      "http://klms.kaist.ac.kr/*",
+      "https://klms.kaist.ac.kr/*"
+    ]
   }],
-  "page_action": {
+  "browser_action": {
     "default_icon": {
-      "16": "images/favicon.png"
-    }
+      "16": "img/nupjuk16.png",
+      "48": "img/nupjuk48.png",
+      "128": "img/nupjuk128.png"
+    },
+    "default_popup": "popup.html"
   },
   "icons": {
-    "16": "images/favicon.png"
+    "16": "img/nupjuk16.png",
+    "48": "img/nupjuk48.png",
+    "128": "img/nupjuk128.png"
   },
-  "web_accessible_resources": ["script.js"],
+  "web_accessible_resources": ["img/announcement.svg", "img/assignment.svg", "img/bell.svg", "img/clock.svg", "img/bulletin.svg", "img/calendar.svg", "img/home.svg", "img/library.svg", "img/menu.svg", "img/qna.svg", "img/quiz.svg", "img/select_white.svg", "img/select_gray.svg", "img/select_gray_reversed.svg", "img/select_black.svg", "img/video.svg", "img/lock.svg", "img/disk.svg", "img/answer.svg", "img/star.svg", "img/download/svg", "img/pdf.svg", "img/folder.svg"],
   "permissions": [
+    "tabs",
+    "storage",
+    "http://iam2.kaist.ac.kr/*",
+    "https://iam2.kaist.ac.kr/*",
     "http://klms.kaist.ac.kr/*",
     "https://klms.kaist.ac.kr/*"
   ]
