@@ -2,54 +2,89 @@
 
 <html>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery-3.5.1.slim.min.js"></script>
+    <script type="text/javascript" src="bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="popup.css">
 
-    <div class="m-3" style="width: 370px">
+
+    <div class="m-3" style="width: 430px">
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <h4 class="m-2 clearfix">
+        <h4 class="m-2">
           <span>
-            <img id="nupjuk" src="img/nupjuk48.png" style="height: 28px;"/> Nupjuk!
-          </span>
-          <span id="themeSelection" style="padding-left: 70px;">
+            <a href="#" style="color: black; text-decoration: none;">
+              <img id="nupjuk" src="img/nupjuk48.png" style="height: 28px; transform: translateY(-1.5px);"/><span id="title"></span>
+            </a>
           </span>
           
         </h4>
+        <span id="themeSelection" class="float-end m-2" style="padding-left: 85px;">
+          <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="radio" class="btn-check" id="radioOriginal" name="themeRadios" value="original">
+            <label class="btn btn-outline-primary themeLabel original" for="radioOriginal" title="Do not override styles and icons" style="width:25px; height:25px; background-color: #ffffff; border-color: #000000;">
+              <div class="line1"></div>
+              <div class="line2"></div>
+            </label>
+          </div>
+        </span>
       </div>
 
       <div style="font-size: small;">
         <div class="row m-1">
-          <div class="col-8">
+          <div class="col-7">
             <input class="form-check-input" type="checkbox" id="jumpCheck">
-            <label class="form-check-label" for="jumpCheck" id="jumpLabel">Override ←/→ to jump</label>
+            <label class="form-check-label" for="jumpCheck" id="jumpLabel"></label>
           </div>
-          <div class="col-4">
+          <div class="col-5">
             <input type="text" id="jumpSeconds" class="input-small" style="width:40px">
-            <label for="jumpSeconds">seconds</label>
+            <label for="jumpSeconds" id="jumpSecondsLabel"></label>
           </div>
         </div>
         <div class="row m-1">
-          <div class="col-8">
+          <div class="col-7">
             <input class="form-check-input" type="checkbox" id="longJumpCheck">
-            <label class="form-check-label" for="longJumpCheck" id="longJumpLabel">Press (Alt + ←/→) to jump</label>
+            <label class="form-check-label" for="longJumpCheck" id="longJumpLabel"></label>
           </div>
-          <div class="col-4">
+          <div class="col-5">
             <input type="text" id="longJumpSeconds" class="input-small" style="width:40px">
-            <label for="longJumpSeconds">seconds</label>
+            <label for="longJumpSeconds" id="longJumpSecondsLabel"></label>
           </div>
         </div>
         <div class="row m-1">
-          <div class="col-8">
+          <div class="col-7">
             <input class="form-check-input" type="checkbox" id="speedControlCheck">
-            <label class="form-check-label" for="speedControlCheck" id="speedControlLabel">Press Z/X/C to control speed<sup>1</sup> by</label>
+            <label class="form-check-label" for="speedControlCheck" id="speedControlLabel"></label>
           </div>
-          <div class="col-4">
+          <div class="col-5">
             <input type="text" id="speedControlUnit" class="input-small" style="width:40px">
             <label for="speedControlUnit">x</label>
           </div>
         </div>
-        <div class="m-2" style="font-size: small"><sup>1</sup> You can control playback speed through (Shift + ←/→) by default.</div>
-        <span class="align-middle" style="padding-right: 70px;">Written by 2021 <a href="https://github.com/GunheeYi">Gunhee Yi</a>.</span><button class="btn btn-primary btn-sm" id="save">Save and refresh</button>
+        <div class="row m-1">
+          <div class="col-6">
+            <input class="form-check-input" type="checkbox" id="darkAtNightCheck">
+            <label class="form-check-label" for="darkAtNightCheck" id="darkAtNightLabel"></label>
+          </div>
+          <div class="col-6">
+            <input class="form-check-input" type="checkbox" id="redirectToLoginCheck">
+            <label class="form-check-label" for="redirectToLoginCheck" id="redirectToLoginLabel"></label>
+          </div>
+        </div>
+        <div>
+          <span class="m-2 align-middle float-start">
+            <a href="#" style="text-decoration: none;" id="kor">KOR</a> | <a href="#" style="text-decoration: none;" id="eng">ENG</a>
+          </span>
+          <span class="m-2 align-middle float-start" id="references"></span>
+          <span class="m-2 align-middle float-end" style="padding-bottom: 10px;" id="writtenBy"></span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="card links shadow-sm" id="links">
+      <div class="card-body">
+        <a id="email" href="#"><img src="img/email.svg" alt="email icon" style="height: 20px;"></a>&nbsp;&nbsp;&nbsp;
+        <a id="github" href="#"><img src="img/github.svg" alt="github icon" style="height: 20px;"></a>&nbsp;&nbsp;&nbsp;
+        <a id="instagram" href="#"><img src="img/instagram.svg" alt="instagram icon" style="height: 20px;"></a>
       </div>
     </div>
     <script type="text/javascript" src="shared.js"></script>
