@@ -1,3 +1,5 @@
+// Written by 2021 Gunhee Yi (gunny@kaist.ac.kr).
+
 var settings = {
     jumpCheck: true,
     jumpSeconds: 10,
@@ -5,17 +7,33 @@ var settings = {
     longJumpSeconds: 60,
     speedControlCheck: true,
     speedControlUnit: 0.2,
-    darkAtNightCheck: false,
-    redirectToLoginCheck: false,
+    darkAtNightCheck: true,
+    redirectToLoginCheck: true,
     language: "kor",
     themes: [
-        {
-            name: "ocean",
-            titleEng: "Ocean",
-            titleKor: "바다",
-            light: "#004191",
-            dark: "#083562",
-            darker: "#062a4e"
+        // { // https://colorswall.com/palette/34822/
+        //     name: "blood",
+        //     titleEng: "Blood",
+        //     titleKor: "피",
+        //     light: "#5b0001",
+        //     dark: "#3d0001",
+        //     darker: "#2e0001"
+        // },
+        { // https://encycolorpedia.kr/d07a00
+            name: "orange",
+            titleEng: "Orange",
+            titleKor: "감귤",
+            light: "#d07a00",
+            dark: "#87500f",
+            darker: "#643d10"
+        },
+        { // https://www.color-hex.com/color-palette/38422
+            name: "mint",
+            titleEng: "Mint",
+            titleKor: "박하",
+            light: "#5c996b",
+            dark: "#3d6647",
+            darker: "#1f3324"
         },
         { // https://colorswall.com/palette/35108/
             name: "olive",
@@ -25,21 +43,37 @@ var settings = {
             dark: "#254512",
             darker: "#1c340e"
         },
+        { // https://www.color-hex.com/color-palette/4666
+            name: "teal",
+            titleEng: "Teal",
+            titleKor: "쇠오리",
+            light: "#008080",
+            dark: "#006666",
+            darker: "#004c4c"
+        },
+        { // https://www.kaist.ac.kr/kr/html/kaist/010401.html
+            name: "cobalt",
+            titleEng: "Cobalt",
+            titleKor: "쪽",
+            light: "#004191",
+            dark: "#083562",
+            darker: "#062a4e"
+        },
         { // https://colorswall.com/palette/27722/
             name: "wine",
             titleEng: "Wine",
-            titleKor: "와인",
+            titleKor: "적포도",
             light: "#691f3b",
             dark: "#4b162a",
             darker: "#3c1222"
         },
-        { // https://colorswall.com/palette/34822/
-            name: "blood",
-            titleEng: "Blood",
-            titleKor: "피",
-            light: "#5b0001",
-            dark: "#3d0001",
-            darker: "#2e0001"
+        { // https://www.color-hex.com/color-palette/22937
+            name: "chocolate",
+            titleEng: "Chocolate",
+            titleKor: "초콜릿",
+            light: "#2e1e0a",
+            dark: "#201407",
+            darker: "#191006"
         },
         {
             name: "steel",
@@ -61,7 +95,7 @@ var settings = {
             darkFont: "#969696",
         }
     ],
-    themeName: 'wine'
+    themeName: 'olive'
 };
 
 function getTheme(themeName){

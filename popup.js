@@ -3,11 +3,6 @@
 function showText(){
     var texts = [
         {
-            id: "title",
-            kor: " 넙죽!",
-            eng: " Nupjuk!"
-        },
-        {
             id: "jumpLabel",
             kor: " ←/→를 눌러 점프:",
             eng: " Override ←/→ to jump"
@@ -40,12 +35,12 @@ function showText(){
         {
             id: "redirectToLoginLabel",
             kor: " 로그인 페이지로 자동 리다이렉트",
-            eng: " Redirect to login page"
+            eng: " Redirect to login page automatically"
         },
         {
             id: "references",
-            kor: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">외부자원</a>',
-            eng: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">External resources</a>'
+            kor: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">외부자원 출처</a>',
+            eng: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">External resource referenes</a>'
         },
         {
             id: "writtenBy",
@@ -142,7 +137,7 @@ window.onload = function() {
             document.getElementById("themeSelection").innerHTML += `
                 <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                     <input type="radio" class="btn-check" id="radio${theme.titleEng}" name="themeRadios" value="${theme.name}">
-                    <label class="btn btn-outline-primary themeLabel" for="radio${theme.titleEng}" title="${(settings.language=="kor" ? theme.titleKor : theme.titleEng).title}" style="width:25px; height:25px; background-color: ${theme.light}; border-color: ${theme.light};"></label>
+                    <label class="btn btn-outline-primary themeLabel" for="radio${theme.titleEng}" title="${settings.language=="kor" ? theme.titleKor : theme.titleEng}" style="width:25px; height:25px; background-color: ${theme.light}; border-color: ${theme.light};"></label>
                 </div>
             `
         });
@@ -153,30 +148,33 @@ window.onload = function() {
         // for (let c of document.getElementById("themeSelection").children) {
         //     c.onclick = applyToPage;
         // }
-    });
 
-    $( function() {
-        $('[data-toggle="tooltip"]').tooltip()
-    });
-
-    $("#linksSwitch").on("click", function() {
-        if($("#links").css("display") == "none"){
-            $("#links").show();
-        } else {
-            $("#links").hide();
-        }
-    });
-
-    ["kor", "eng"].forEach(lang => {
-        document.getElementById(lang).onclick = () => {
-            settings.language = lang;
-            showText();
-            applySettings();
-        }
-    })
+        $( function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
     
+        $("#linksSwitch").on("click", function() {
+            if($("#links").css("display") == "none"){
+                $("#links").show();
+            } else {
+                $("#links").hide();
+            }
+        });
+    
+        ["kor", "eng"].forEach(lang => {
+            document.getElementById(lang).onclick = () => {
+                settings.language = lang;
+                showText();
+                applySettings();
+            }
+        })
+        
+    
+        document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
+        document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
+        document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
+        document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("references.html")}));
+    });
 
-    document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
-    document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
-    document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
+    
 }

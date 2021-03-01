@@ -1,3 +1,5 @@
+// Written by 2021 Gunhee Yi (gunny@kaist.ac.kr).
+
 function download(url) {
     var a = document.createElement("a");
     a.href = url;

@@ -1,3 +1,5 @@
+// Written by 2021 Gunhee Yi (gunny@kaist.ac.kr).
+
 if(settings.redirectToLoginCheck && window.location.href=="https://klms.kaist.ac.kr/login/ssologin.php") window.location.href = "https://klms.kaist.ac.kr/sso2/login.php";
 
 function replaceImgs(){
@@ -31,6 +33,13 @@ function replaceImgs(){
                 ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_url", "image=icon"]
             ],
             new: chrome.runtime.getURL("img/clip.svg"),
+            height: "28px"
+        },
+        {
+            old: [
+                ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_resource", "image=icon"]
+            ],
+            new: chrome.runtime.getURL("img/file.svg"),
             height: "28px"
         },
         {
