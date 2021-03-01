@@ -31,25 +31,27 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
         settings[key] = syncedSettings.hasOwnProperty(key) ? syncedSettings[key] : (localStorage.hasOwnProperty(key) ? localStorage[key] : settings[key])
     });
 
+    if(settings.redirectToLoginCheck && window.location.href=="https://klms.kaist.ac.kr/login/ssologin.php") window.location.href = "https://klms.kaist.ac.kr/sso2/login.php";
+
     if(settings.themeName!="original"){
         var now = minuteOfDay();
         var isNight = (now <= sun("rise")) || (now >= sun("set"));
         console.log(isNight ? "해가 졌음" : "해가 떠있음");
-        if(settings.darkAtNightCheck && isNight) settings.themeName=="dark";
-        var isDark = settings.themeName=="dark"
+        var themeName = (((settings.darkAtNightCheck && isNight) || settings.themeName=="dark") ? "dark" : settings.themeName );
+        var isDark = themeName=="dark";
     
-        var light = getTheme(settings.themeName).light;
-        var dark = getTheme(settings.themeName).dark;
-        var darker = getTheme(settings.themeName).darker;
+        var light = getTheme(themeName).light;
+        var dark = getTheme(themeName).dark;
+        var darker = getTheme(themeName).darker;
         var lighter, lightFont, darkFont;
         if(isDark) {
-            lighter = getTheme(settings.themeName).lighter;
-            lightFont = getTheme(settings.themeName).lightFont;
-            darkFont = getTheme(settings.themeName).darkFont;
+            lighter = getTheme(themeName).lighter;
+            lightFont = getTheme(themeName).lightFont;
+            darkFont = getTheme(themeName).darkFont;
         }
 
         var lightStyles = `
-            header.ks-header,  .main-course-list>li .bt, .course-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .course-info .course-bt, .progress-wrap .progressbar span, .pagination li.active a, .btn-primary, .course-slider .swiper-slide>h6 .bt.point, .btn-area.t-center .bt, .modal .modal-dialog .modal-content .modal-header, .manual-wrap .manual-hd, .study-wrap .study-hd, #wrap .group .lnb .m-header, .m-menu .m-header, .course-slider.bg-white .swiper-slide h6, .path-mod-quiz #mod_quiz_navblock .qnbutton.thispage, #page-calendar-view .calendartable tbody tr td.today {
+            header.ks-header,  .main-course-list>li .bt, .course-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .course-info .course-bt, .progress-wrap .progressbar span, .pagination li.active a, .btn-primary, .course-slider .swiper-slide>h6 .bt.point, .btn-area.t-center .bt, .modal .modal-dialog .modal-content .modal-header, .manual-wrap .manual-hd, .study-wrap .study-hd, #wrap .group .lnb .m-header, .m-menu .m-header, .course-slider.bg-white .swiper-slide h6, .path-mod-quiz #mod_quiz_navblock .qnbutton.thispage, #page-calendar-view .calendartable tbody tr td.today, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li .badge.badge-circle.calendar_event_course {
                 background-color: ${light} !important;
                 border-color: ${light};
             }

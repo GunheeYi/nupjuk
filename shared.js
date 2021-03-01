@@ -7,7 +7,7 @@ var settings = {
     longJumpSeconds: 60,
     speedControlCheck: true,
     speedControlUnit: 0.2,
-    darkAtNightCheck: true,
+    darkAtNightCheck: false,
     redirectToLoginCheck: true,
     language: "kor",
     themes: [

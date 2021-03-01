@@ -2,6 +2,11 @@
 
 function showText(){
     var texts = [
+        // {
+        //     id: "vodControl",
+        //     kor: "VOD 제어",
+        //     eng: "VOD Control"
+        // },
         {
             id: "jumpLabel",
             kor: " ←/→를 눌러 점프:",
@@ -39,7 +44,7 @@ function showText(){
         },
         {
             id: "references",
-            kor: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">외부자원 출처</a>',
+            kor: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">외부리소스 출처</a>',
             eng: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">External resource referenes</a>'
         },
         {
@@ -54,6 +59,26 @@ function showText(){
     if (navigator.platform=="MacIntel") {
         document.getElementById("longJumpLabel").innerHTML = settings.language=="kor" ? "(⌥ + ←/→)를 눌러 긴 점프" : "Press (⌥ + ←/→) to long jump";
     }
+}
+
+function activateSwitches() {
+    $( function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+
+    $("#linksSwitch").on("click", function() {
+        if($("#links").css("display") == "none"){
+            $("#links").show();
+        } else {
+            $("#links").hide();
+        }
+    });
+
+    document.getElementById("title").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi/nupjuk"}));
+    document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
+    document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
+    document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
+    document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("references.html")}));
 }
 
 window.onload = function() {
@@ -98,6 +123,7 @@ window.onload = function() {
 
     function applySettings(){
         if(verifySettings()){
+            activateSwitches();
             chrome.storage.sync.set(settings, function(){
                 if(settings.themeName=="original"){
                     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -148,32 +174,17 @@ window.onload = function() {
         // for (let c of document.getElementById("themeSelection").children) {
         //     c.onclick = applyToPage;
         // }
+    
+        activateSwitches();
 
-        $( function() {
-            $('[data-toggle="tooltip"]').tooltip()
-        });
-    
-        $("#linksSwitch").on("click", function() {
-            if($("#links").css("display") == "none"){
-                $("#links").show();
-            } else {
-                $("#links").hide();
-            }
-        });
-    
         ["kor", "eng"].forEach(lang => {
             document.getElementById(lang).onclick = () => {
                 settings.language = lang;
                 showText();
                 applySettings();
             }
-        })
+        });
         
-    
-        document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
-        document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
-        document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
-        document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("references.html")}));
     });
 
     
