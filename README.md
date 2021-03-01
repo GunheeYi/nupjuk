@@ -1,7 +1,7 @@
 # Nupjuk!
 Version 2.0, Mar 1 2021.
 ## KLMS. Redesigned.
----
+
 ### I Am Back
 Customize seconds to jump when watching VODs. Press Alt or ⌥ together to perform long jump. Modified from the predecessor: KLMS VOD Controller.
 ### Colorful
@@ -14,6 +14,7 @@ Replace bitmap icons with identical vector icons.
 Skip the welcome page, directly to the login page.
 ### One Click Away
 Download lecture materials with a single click.
+
 ---
 ### 5252 믿고있었다구
 이전 KLMS Video Controller의 기능을 보강했습니다. 점프할 시간을 직접 설정하고 Alt나 ⌥를 같이 눌러 길게 점프하세요. 배속은 Shift+방향키로 기본 지원되지만 Z/X/C를 사용할 수도 있습니다.
