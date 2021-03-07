@@ -57,7 +57,7 @@ function showText(){
 
     // Check if running on Mac
     if (navigator.platform=="MacIntel") {
-        document.getElementById("longJumpLabel").innerHTML = settings.language=="kor" ? "(⌥ + ←/→)를 눌러 긴 점프" : "Press (⌥ + ←/→) to long jump";
+        document.getElementById("longJumpLabel").innerHTML = settings.language=="kor" ? "(⌥ + ←/→)를 눌러 긴 점프:" : "Press (⌥ + ←/→) to long jump";
     }
 }
 

@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D3B747525F521A300737E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B747425F521A300737E85 /* AppDelegate.swift */; };
+		3D3B747825F521A300737E85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B747625F521A300737E85 /* Main.storyboard */; };
+		3D3B747A25F521A300737E85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B747925F521A300737E85 /* ViewController.swift */; };
+		3D3B747C25F521A400737E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B747B25F521A400737E85 /* Assets.xcassets */; };
+		3D3B748325F521A400737E85 /* Nupjuk! Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3D3B748225F521A400737E85 /* Nupjuk! Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3D3B748825F521A400737E85 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3B748725F521A400737E85 /* Cocoa.framework */; };
+		3D3B748B25F521A400737E85 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B748A25F521A400737E85 /* SafariWebExtensionHandler.swift */; };
+		3D3B74A825F521A500737E85 /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749825F521A500737E85 /* bootstrap.min.css */; };
+		3D3B74A925F521A500737E85 /* download.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749925F521A500737E85 /* download.js */; };
+		3D3B74AA25F521A500737E85 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749A25F521A500737E85 /* popup.js */; };
+		3D3B74AB25F521A500737E85 /* after.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749B25F521A500737E85 /* after.js */; };
+		3D3B74AC25F521A500737E85 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749C25F521A500737E85 /* popup.html */; };
+		3D3B74AD25F521A500737E85 /* before.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749D25F521A500737E85 /* before.js */; };
+		3D3B74AE25F521A500737E85 /* bootstrap.bundle.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749E25F521A500737E85 /* bootstrap.bundle.min.js */; };
+		3D3B74AF25F521A500737E85 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B749F25F521A500737E85 /* README.md */; };
+		3D3B74B025F521A500737E85 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A025F521A500737E85 /* img */; };
+		3D3B74B125F521A500737E85 /* README_deprecated.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A125F521A500737E85 /* README_deprecated.md */; };
+		3D3B74B225F521A500737E85 /* Nupjuk! in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A225F521A500737E85 /* Nupjuk! */; };
+		3D3B74B325F521A500737E85 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A325F521A500737E85 /* manifest.json */; };
+		3D3B74B425F521A500737E85 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A425F521A500737E85 /* popup.css */; };
+		3D3B74B525F521A500737E85 /* shared.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A525F521A500737E85 /* shared.js */; };
+		3D3B74B625F521A500737E85 /* references.html in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A625F521A500737E85 /* references.html */; };
+		3D3B74B725F521A500737E85 /* jquery-3.5.1.slim.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 3D3B74A725F521A500737E85 /* jquery-3.5.1.slim.min.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D3B748425F521A400737E85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D3B746825F521A300737E85 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D3B748125F521A400737E85;
+			remoteInfo = "Nupjuk! Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3D3B749325F521A400737E85 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3D3B748325F521A400737E85 /* Nupjuk! Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3D3B747025F521A300737E85 /* Nupjuk!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nupjuk!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3B747325F521A300737E85 /* Nupjuk_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nupjuk_.entitlements; sourceTree = "<group>"; };
+		3D3B747425F521A300737E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3D3B747725F521A300737E85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3D3B747925F521A300737E85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3D3B747B25F521A400737E85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D3B747D25F521A400737E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D3B748225F521A400737E85 /* Nupjuk! Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Nupjuk! Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3B748725F521A400737E85 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3D3B748A25F521A400737E85 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		3D3B748C25F521A400737E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D3B748D25F521A400737E85 /* Nupjuk__Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nupjuk__Extension.entitlements; sourceTree = "<group>"; };
+		3D3B749825F521A500737E85 /* bootstrap.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = bootstrap.min.css; path = ../../bootstrap.min.css; sourceTree = "<group>"; };
+		3D3B749925F521A500737E85 /* download.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = download.js; path = ../../download.js; sourceTree = "<group>"; };
+		3D3B749A25F521A500737E85 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = ../../popup.js; sourceTree = "<group>"; };
+		3D3B749B25F521A500737E85 /* after.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = after.js; path = ../../after.js; sourceTree = "<group>"; };
+		3D3B749C25F521A500737E85 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = ../../popup.html; sourceTree = "<group>"; };
+		3D3B749D25F521A500737E85 /* before.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = before.js; path = ../../before.js; sourceTree = "<group>"; };
+		3D3B749E25F521A500737E85 /* bootstrap.bundle.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = bootstrap.bundle.min.js; path = ../../bootstrap.bundle.min.js; sourceTree = "<group>"; };
+		3D3B749F25F521A500737E85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		3D3B74A025F521A500737E85 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = ../../img; sourceTree = "<group>"; };
+		3D3B74A125F521A500737E85 /* README_deprecated.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README_deprecated.md; path = ../../README_deprecated.md; sourceTree = "<group>"; };
+		3D3B74A225F521A500737E85 /* Nupjuk! */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Nupjuk!"; sourceTree = SOURCE_ROOT; };
+		3D3B74A325F521A500737E85 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../manifest.json; sourceTree = "<group>"; };
+		3D3B74A425F521A500737E85 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = popup.css; path = ../../popup.css; sourceTree = "<group>"; };
+		3D3B74A525F521A500737E85 /* shared.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = shared.js; path = ../../shared.js; sourceTree = "<group>"; };
+		3D3B74A625F521A500737E85 /* references.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = references.html; path = ../../references.html; sourceTree = "<group>"; };
+		3D3B74A725F521A500737E85 /* jquery-3.5.1.slim.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "jquery-3.5.1.slim.min.js"; path = "../../jquery-3.5.1.slim.min.js"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D3B746D25F521A300737E85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D3B747F25F521A400737E85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D3B748825F521A400737E85 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D3B746725F521A300737E85 = {
+			isa = PBXGroup;
+			children = (
+				3D3B747225F521A300737E85 /* Nupjuk! */,
+				3D3B748925F521A400737E85 /* Nupjuk! Extension */,
+				3D3B748625F521A400737E85 /* Frameworks */,
+				3D3B747125F521A300737E85 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D3B747125F521A300737E85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D3B747025F521A300737E85 /* Nupjuk!.app */,
+				3D3B748225F521A400737E85 /* Nupjuk! Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D3B747225F521A300737E85 /* Nupjuk! */ = {
+			isa = PBXGroup;
+			children = (
+				3D3B747325F521A300737E85 /* Nupjuk_.entitlements */,
+				3D3B747425F521A300737E85 /* AppDelegate.swift */,
+				3D3B747625F521A300737E85 /* Main.storyboard */,
+				3D3B747925F521A300737E85 /* ViewController.swift */,
+				3D3B747B25F521A400737E85 /* Assets.xcassets */,
+				3D3B747D25F521A400737E85 /* Info.plist */,
+			);
+			path = "Nupjuk!";
+			sourceTree = "<group>";
+		};
+		3D3B748625F521A400737E85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D3B748725F521A400737E85 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D3B748925F521A400737E85 /* Nupjuk! Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3D3B749725F521A500737E85 /* Resources */,
+				3D3B748A25F521A400737E85 /* SafariWebExtensionHandler.swift */,
+				3D3B748C25F521A400737E85 /* Info.plist */,
+				3D3B748D25F521A400737E85 /* Nupjuk__Extension.entitlements */,
+			);
+			path = "Nupjuk! Extension";
+			sourceTree = "<group>";
+		};
+		3D3B749725F521A500737E85 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3D3B749825F521A500737E85 /* bootstrap.min.css */,
+				3D3B749925F521A500737E85 /* download.js */,
+				3D3B749A25F521A500737E85 /* popup.js */,
+				3D3B749B25F521A500737E85 /* after.js */,
+				3D3B749C25F521A500737E85 /* popup.html */,
+				3D3B749D25F521A500737E85 /* before.js */,
+				3D3B749E25F521A500737E85 /* bootstrap.bundle.min.js */,
+				3D3B749F25F521A500737E85 /* README.md */,
+				3D3B74A025F521A500737E85 /* img */,
+				3D3B74A125F521A500737E85 /* README_deprecated.md */,
+				3D3B74A225F521A500737E85 /* Nupjuk! */,
+				3D3B74A325F521A500737E85 /* manifest.json */,
+				3D3B74A425F521A500737E85 /* popup.css */,
+				3D3B74A525F521A500737E85 /* shared.js */,
+				3D3B74A625F521A500737E85 /* references.html */,
+				3D3B74A725F521A500737E85 /* jquery-3.5.1.slim.min.js */,
+			);
+			name = Resources;
+			path = "Nupjuk! Extension";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D3B746F25F521A300737E85 /* Nupjuk! */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D3B749425F521A400737E85 /* Build configuration list for PBXNativeTarget "Nupjuk!" */;
+			buildPhases = (
+				3D3B746C25F521A300737E85 /* Sources */,
+				3D3B746D25F521A300737E85 /* Frameworks */,
+				3D3B746E25F521A300737E85 /* Resources */,
+				3D3B749325F521A400737E85 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D3B748525F521A400737E85 /* PBXTargetDependency */,
+			);
+			name = "Nupjuk!";
+			productName = "Nupjuk!";
+			productReference = 3D3B747025F521A300737E85 /* Nupjuk!.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3D3B748125F521A400737E85 /* Nupjuk! Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D3B749025F521A400737E85 /* Build configuration list for PBXNativeTarget "Nupjuk! Extension" */;
+			buildPhases = (
+				3D3B747E25F521A400737E85 /* Sources */,
+				3D3B747F25F521A400737E85 /* Frameworks */,
+				3D3B748025F521A400737E85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Nupjuk! Extension";
+			productName = "Nupjuk! Extension";
+			productReference = 3D3B748225F521A400737E85 /* Nupjuk! Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D3B746825F521A300737E85 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					3D3B746F25F521A300737E85 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					3D3B748125F521A400737E85 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 3D3B746B25F521A300737E85 /* Build configuration list for PBXProject "Nupjuk!" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D3B746725F521A300737E85;
+			productRefGroup = 3D3B747125F521A300737E85 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D3B746F25F521A300737E85 /* Nupjuk! */,
+				3D3B748125F521A400737E85 /* Nupjuk! Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D3B746E25F521A300737E85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D3B747C25F521A400737E85 /* Assets.xcassets in Resources */,
+				3D3B747825F521A300737E85 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D3B748025F521A400737E85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D3B74B025F521A500737E85 /* img in Resources */,
+				3D3B74B225F521A500737E85 /* Nupjuk! in Resources */,
+				3D3B74A925F521A500737E85 /* download.js in Resources */,
+				3D3B74AC25F521A500737E85 /* popup.html in Resources */,
+				3D3B74B325F521A500737E85 /* manifest.json in Resources */,
+				3D3B74AB25F521A500737E85 /* after.js in Resources */,
+				3D3B74AD25F521A500737E85 /* before.js in Resources */,
+				3D3B74B125F521A500737E85 /* README_deprecated.md in Resources */,
+				3D3B74AE25F521A500737E85 /* bootstrap.bundle.min.js in Resources */,
+				3D3B74B525F521A500737E85 /* shared.js in Resources */,
+				3D3B74B725F521A500737E85 /* jquery-3.5.1.slim.min.js in Resources */,
+				3D3B74B625F521A500737E85 /* references.html in Resources */,
+				3D3B74AA25F521A500737E85 /* popup.js in Resources */,
+				3D3B74AF25F521A500737E85 /* README.md in Resources */,
+				3D3B74A825F521A500737E85 /* bootstrap.min.css in Resources */,
+				3D3B74B425F521A500737E85 /* popup.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D3B746C25F521A300737E85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D3B747A25F521A300737E85 /* ViewController.swift in Sources */,
+				3D3B747525F521A300737E85 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D3B747E25F521A400737E85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D3B748B25F521A400737E85 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D3B748525F521A400737E85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D3B748125F521A400737E85 /* Nupjuk! Extension */;
+			targetProxy = 3D3B748425F521A400737E85 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D3B747625F521A300737E85 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D3B747725F521A300737E85 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D3B748E25F521A400737E85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3D3B748F25F521A400737E85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		3D3B749125F521A400737E85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Nupjuk! Extension/Nupjuk__Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Nupjuk! Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "GunheeYi.Nupjuk-.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3D3B749225F521A400737E85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Nupjuk! Extension/Nupjuk__Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Nupjuk! Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "GunheeYi.Nupjuk-.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3D3B749525F521A400737E85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Nupjuk!/Nupjuk_.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Nupjuk!/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "GunheeYi.Nupjuk-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3D3B749625F521A400737E85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Nupjuk!/Nupjuk_.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Nupjuk!/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "GunheeYi.Nupjuk-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D3B746B25F521A300737E85 /* Build configuration list for PBXProject "Nupjuk!" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D3B748E25F521A400737E85 /* Debug */,
+				3D3B748F25F521A400737E85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D3B749025F521A400737E85 /* Build configuration list for PBXNativeTarget "Nupjuk! Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D3B749125F521A400737E85 /* Debug */,
+				3D3B749225F521A400737E85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D3B749425F521A400737E85 /* Build configuration list for PBXNativeTarget "Nupjuk!" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D3B749525F521A400737E85 /* Debug */,
+				3D3B749625F521A400737E85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D3B746825F521A300737E85 /* Project object */;
+}

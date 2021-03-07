@@ -273,3 +273,8 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
 // 다운로드 화면 색
 // 화면 줄였을 때 나타나는 플러스 버튼 색
 // https://klms.kaist.ac.kr/course/view.php?id=117377 에 있는 스위치
+// 밤에는 다크테마 사용하기 -> "하기" 지우기
+// https://klms.kaist.ac.kr/theme/image.php?theme=oklass39&component=core&rev=1614647021&image=f%2Farchive archive 아이콘 zip 아이콘으로 대체
+// 알림에 동영상 아이콘 대체 안됨
+// 동영상이나 과제 New 아이콘 (N 주위에 사각형) 대체
+// Assignment 기한 글자색 대체
