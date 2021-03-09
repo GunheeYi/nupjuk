@@ -1,0 +1,37 @@
+/* Written by 2021 Gunhee Yi (gunny@kaist.ac.kr). */
+
+.invalid {
+    border: 2px solid red;
+    border-radius: 3px;
+}
+
+.original {
+}
+.line1 {
+    width: 31px;
+    height: 31px;
+    border-bottom: 1px solid red;
+    transform:
+        translateY(-20.5px)
+        translateX(-5.1px)
+        rotate(45deg); 
+    position: absolute;
+}
+.line2 {
+    width: 31px;
+    height: 31px;
+    border-bottom: 1px solid red;
+    transform:
+        translateY(-20.5px)
+        translateX(-26px)
+        rotate(-45deg); 
+    position: absolute;
+}
+
+.links {
+    display: none;
+    transform:
+        translateY(-70px)
+        translateX(350px);
+    position: absolute;
+}
