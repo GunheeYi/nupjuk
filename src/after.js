@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=assign"],
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=mod_assign", "image=icon"]
                 ],
-                new: chrome.runtime.getURL("img/assignment.svg"),
+                new: chrome.runtime.getURL("img/text.svg"),
                 height: "28px"
             },
             {
@@ -87,6 +87,27 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon%2Fnew"]
                 ],
                 new: chrome.runtime.getURL("img/new.svg"),
+                height: "28px"
+            },
+            {
+                old: [
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_notice"],
+                ],
+                new: chrome.runtime.getURL("img/announcement.svg"),
+                height: "28px"
+            },
+            {
+                old: [
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_qna"],
+                ],
+                new: chrome.runtime.getURL("img/qna.svg"),
+                height: "28px"
+            },
+            {
+                old: [
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_default"],
+                ],
+                new: chrome.runtime.getURL("img/board.svg"),
                 height: "28px"
             },
             {
