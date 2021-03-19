@@ -1,6 +1,9 @@
 // Written by 2021 Gunhee Yi (gunny@kaist.ac.kr).
 
 function showText(){
+    const isMac = navigator.platform=="MacIntel";
+    const altSymbol = isMac ? "⌥" : "Alt";
+    const enterSymbol = isMac ? "↩" : "↵";
     var texts = [
         // {
         //     id: "vodControl",
@@ -14,8 +17,8 @@ function showText(){
         },
         {
             id: "longJumpLabel",
-            kor: " (Alt + ←/→)를 눌러 긴 점프:",
-            eng: " Press (Alt + ←/→) to jump"
+            kor: ` (${altSymbol} + ←/→)를 눌러 긴 점프:`,
+            eng: ` Press (${altSymbol}  + ←/→) to jump`
         },
         {
             id: "jumpSecondsLabel",
@@ -29,8 +32,28 @@ function showText(){
         },
         {
             id: "speedControlLabel",
-            kor: ' Z/X/C를 눌러 재생속도 조절<sup data-toggle="tooltip" title="(Shift + ←/→)를 눌러 조절하는 기능이 이미 있습니다.">!</sup>:',
+            kor: ' Z/X/C를 눌러 재생속도 조절<sup data-toggle="tooltip" title="1. (Shift + ←/→)를 눌러 조절하는 기능이 이미 있습니다.">!</sup>:',
             eng: ' Press Z/X/C to control speed<sup data-toggle="tooltip" title="You can control playback speed through (Shift + ←/→) by default.">!</sup> by'
+        },
+        {
+            id: "vodControlTitle",
+            kor: '동영상 제어 <span style="text-decoration:none; font-size: 12px;">⚠️ 제작자는 동영상 임의 조작에 따른 결과에 책임을 지지 않습니다.</span>',
+            eng: 'VOD Control <span style="text-decoration:none; font-size: 12px;">⚠️ The user assumes all responsibility for controlling VODs.</span>'
+        },
+        {
+            id: "miscellaneousTitle",
+            kor: '기타',
+            eng: 'Miscellaneous'
+        },
+        {
+            id: "weekAllLabel",
+            kor: " 강의실 입장 시 전체 주차 표시",
+            eng: ' Week to ALL when entering lecture rooms'
+        },
+        {
+            id: "enterToWeekLabel",
+            kor: ` ${enterSymbol}를 눌러 현재 주차로 이동`,
+            eng:  ` Press ${enterSymbol} to scroll to current week`
         },
         {
             id: "darkAtNightLabel",
@@ -40,7 +63,7 @@ function showText(){
         {
             id: "redirectToLoginLabel",
             kor: " 로그인 페이지로 자동 리다이렉트",
-            eng: " Redirect to login page automatically"
+            eng: " Automatic redirect to login"
         },
         {
             id: "references",
@@ -49,16 +72,11 @@ function showText(){
         },
         {
             id: "writtenBy",
-            kor: ' 2021 <a id="linksSwitch" href="#" style="text-decoration: none;">이건희</a>가 씀',
-            eng: ' Written by 2021 <a id="linksSwitch" href="#" style="text-decoration: none;">Gunhee Yi</a>'
+            kor: ' 2021 <a id="linksSwitch" href="#" style="text-decoration: none;">이건희</a>',
+            eng: ' 2021 <a id="linksSwitch" href="#" style="text-decoration: none;">Gunhee Yi</a>'
         }
     ]
     texts.forEach(text => document.getElementById(text.id).innerHTML = text[settings.language]);
-
-    // Check if running on Mac
-    if (navigator.platform=="MacIntel") {
-        document.getElementById("longJumpLabel").innerHTML = settings.language=="kor" ? "(⌥ + ←/→)를 눌러 긴 점프:" : "Press (⌥ + ←/→) to long jump";
-    }
 }
 
 function activateSwitches() {
@@ -78,7 +96,7 @@ function activateSwitches() {
     document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
     document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
     document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
-    document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("references.html")}));
+    document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html")}));
 }
 
 window.onload = function() {

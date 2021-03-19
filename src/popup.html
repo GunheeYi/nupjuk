@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="popup.css">
 
 
-    <div class="m-3" style="width: 500px">
+    <div class="m-3" style="width: 520px">
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <h4 class="m-2 align-middle float-start">
           <span>
             <a href="#" style="color: black; text-decoration: none;">
-              <img id="nupjuk" src="img/nupjuk48.png" style="height: 28px; transform: translateY(-1.5px);"/><span id="title"> Nupjuk!</span>
+              <img id="nupjuk" src="img/nupjuk48.png" style="height: 28px; transform: translateY(-1.5px);"/><span id="title"> Nupjuk! </span><span style="font-size: 12px;">v2.1</span>
             </a>
           </span>
         </h4>
-        &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span id="themeSelection" class="m-2 align-middle float-end">
           <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             <input type="radio" class="btn-check" id="radioOriginal" name="themeRadios" value="original">
@@ -31,43 +31,49 @@
 
       <div style="font-size: small;">
         <div class="row m-1">
-          <div class="col-7">
+          <h6 id="vodControlTitle"></h6> 
+          <div class="col-6">
             <input class="form-check-input" type="checkbox" id="jumpCheck">
             <label class="form-check-label" for="jumpCheck" id="jumpLabel"></label>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <input type="text" id="jumpSeconds" class="input-small" style="width:40px">
             <label for="jumpSeconds" id="jumpSecondsLabel"></label>
           </div>
-        </div>
-        <div class="row m-1">
-          <div class="col-7">
+          <div class="col-6">
             <input class="form-check-input" type="checkbox" id="longJumpCheck">
             <label class="form-check-label" for="longJumpCheck" id="longJumpLabel"></label>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <input type="text" id="longJumpSeconds" class="input-small" style="width:40px">
             <label for="longJumpSeconds" id="longJumpSecondsLabel"></label>
           </div>
-        </div>
-        <div class="row m-1">
-          <div class="col-7">
+          <div class="col-6">
             <input class="form-check-input" type="checkbox" id="speedControlCheck">
             <label class="form-check-label" for="speedControlCheck" id="speedControlLabel"></label>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <input type="text" id="speedControlUnit" class="input-small" style="width:40px">
             <label for="speedControlUnit">x</label>
           </div>
         </div>
         <div class="row m-1">
+          <h6 id="miscellaneousTitle"></h6> 
           <div class="col-7">
-            <input class="form-check-input" type="checkbox" id="redirectToLoginCheck">
-            <label class="form-check-label" for="redirectToLoginCheck" id="redirectToLoginLabel"></label>
+            <input class="form-check-input" type="checkbox" id="weekAllCheck">
+            <label class="form-check-label" for="weekAllCheck" id="weekAllLabel"></label>
           </div>
           <div class="col-5">
             <input class="form-check-input" type="checkbox" id="darkAtNightCheck">
             <label class="form-check-label" for="darkAtNightCheck" id="darkAtNightLabel"></label>
+          </div>
+          <div class="col-7">
+            <input class="form-check-input" type="checkbox" id="enterToWeekCheck">
+            <label class="form-check-label" for="enterToWeekCheck" id="enterToWeekLabel"></label>
+          </div>
+          <div class="col-5">
+            <input class="form-check-input" type="checkbox" id="redirectToLoginCheck">
+            <label class="form-check-label" for="redirectToLoginCheck" id="redirectToLoginLabel"></label>
           </div>
         </div>
         <div>

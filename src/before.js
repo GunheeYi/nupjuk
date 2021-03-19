@@ -1,21 +1,22 @@
 // Written by 2021 Gunhee Yi (gunny@kaist.ac.kr).
 
-function dayOfYear() {
+// SECTION FOR COMPUTING TIME OF SUNRISE AND SUNSET
+// Return days passed since start of year
+function dayOfYear(now) {
     // https://stackoverflow.com/questions/8619879/javascript-calculate-the-day-of-the-year-1-366
-    var now = new Date();
     var start = new Date(now.getFullYear(), 0, 0);
     var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
     var oneDay = 1000 * 60 * 60 * 24;
     var day = Math.floor(diff / oneDay);
     return day;
 }
-
+// Return minutes passed since start of day
 function minuteOfDay() {
     return (new Date()).getHours()*60 + (new Date()).getMinutes();
 }
-
+// Approximate time of sunrise and sunset; interpolate between max and min time (ref. region: Daejeon, South Korea)
 function sun(t) {
-    var temp = 1 - Math.abs(dayOfYear()-133) / 133;
+    var temp = 1 - Math.abs(dayOfYear(new Date())-133) / 133;
     var sunriseMin = 312, sunriseMax = 462;
     var sunsetMin = 1035, sunsetMax = 1192;
     if(t=="rise") return sunriseMin + (1-temp) * (sunriseMax-sunriseMin);
@@ -31,7 +32,13 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
         settings[key] = syncedSettings.hasOwnProperty(key) ? syncedSettings[key] : (localStorage.hasOwnProperty(key) ? localStorage[key] : settings[key])
     });
 
-    if(settings.redirectToLoginCheck && window.location.href=="https://klms.kaist.ac.kr/login/ssologin.php") window.location.href = "https://klms.kaist.ac.kr/sso2/login.php";
+    var href = window.location.href;
+
+    // Automatic redirection to login page
+    if(settings.redirectToLoginCheck && pageIs("landing")) window.location.href = "https://klms.kaist.ac.kr/sso2/login.php";
+
+    // Automatic navigation to week "ALL"
+    if(settings.weekAllCheck && pageIs("roomWeekNone")) window.location.href += "&section=0";
 
     if(settings.themeName!="original"){
         var now = minuteOfDay();
@@ -51,7 +58,7 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
         }
 
         var lightStyles = `
-            header.ks-header,  .main-course-list>li .bt, .course-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .course-info .course-bt, .progress-wrap .progressbar span, .pagination li.active a, .btn-primary, .course-slider .swiper-slide>h6 .bt.point, .btn-area.t-center .bt, .modal .modal-dialog .modal-content .modal-header, .manual-wrap .manual-hd, .study-wrap .study-hd, #wrap .group .lnb .m-header, .m-menu .m-header, .course-slider.bg-white .swiper-slide h6, .path-mod-quiz #mod_quiz_navblock .qnbutton.thispage, #page-calendar-view .calendartable tbody tr td.today, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li .badge.badge-circle.calendar_event_course, .course-slider .swiper-slide>h6, .layerpop-wrap .layerpop .pop-title, .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd.yui3-widget-hd {
+            header.ks-header,  .main-course-list>li .bt, .course-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .course-info .course-bt, .progress-wrap .progressbar span, .pagination li.active a, .btn-primary, .course-slider .swiper-slide>h6 .bt.point, .btn-area.t-center .bt, .modal .modal-dialog .modal-content .modal-header, .manual-wrap .manual-hd, .study-wrap .study-hd, #wrap .group .lnb .m-header, .m-menu .m-header, .course-slider.bg-white .swiper-slide h6, .path-mod-quiz #mod_quiz_navblock .qnbutton.thispage, #page-calendar-view .calendartable tbody tr td.today, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li .badge.badge-circle.calendar_event_course, .course-slider .swiper-slide>h6, .layerpop-wrap .layerpop .pop-title, .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd.yui3-widget-hd, .quizattempt .singlebutton .btn, .path-mod-quiz .othernav a.endtestlink, .btn.atto_image_urlentrysubmit, .btn.btn-secondary.submit {
                 background-color: ${light} !important;
                 border-color: ${light};
             }
@@ -204,26 +211,35 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
                 background: url(${chrome.runtime.getURL("img/warning.svg")}) no-repeat right center;
                 padding-right: 23px;
             }
-            .activity-pop-list>li>div .pop-img-wrap img {
-                margin-left: 5px;
-                margin-top: 5px;
-            }
             .group .lnb .menu-grp>div>ul>li.new-menu>a {
                 background: url(${chrome.runtime.getURL("img/new.svg")}) no-repeat center right 20px;
                 background-size: 20px;
             }
+            .m-fixed-menu>ul li.btn-menu>a {
+                background: url(${chrome.runtime.getURL(isDark ? "img/icon_m_plus_dark.svg" : "img/icon_m_plus_light.svg")}) no-repeat center
+            }
         `
+
+        // .tooltip-layer .activity-pop-list>li>div .pop-img-wrap img {
+        //     margin-left: 2.5px;
+        //     margin-top: 2.4px;
+        // }
+        // .pop-content .activity-pop-list>li>div .pop-img-wrap img {
+        //     margin-left: 5px;
+        //     margin-top: 5px;
+        // }
+
         var darkStyles = `
             .progress-wrap .progressbar span {
                 background-color: #ffffff !important;
             }
-            header.ks-header, .course-content ul .section.main .section.img-text>li, .course-content ul .section.main h3.sectionname, .courseboard_container .search_form, .table>thead>tr>th, #block-region-side-pre .card-body .card-title, .course-slider.bg-white .swiper-slide h6, #ub_keyfield, #page-calendar-view .calendartable thead tr th.header, #page-calendar-view .calendartable tbody tr td.today, .courseboard_view .info, .courseboard_view .content, .courseboard_view .subject h3, .courseboard_view .subject h4, .rnb-menu>p, .progress-wrap .progressbar, .study-wrap .study-hd, .quizinfo, .generaltable>thead>tr>th, .que, table.quizreviewsummary th.cell, .generaltable>tbody>tr>th, .generaltable tbody tr:nth-of-type(odd), .modal-content, .courseboard_view .info .file, .courseboard_view .courseboard_comment, .mform>.form-group.row.fitem:not([data-groupname="buttonar"])>.col-md-3, div.editor_atto_toolbar, .path-mod-folder .filemanager>.ygtvitem, .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link, .table>tbody>tr>th, legend, .well.search_form, .local_ubmessage .form-horizontal .control-group, .local_ubmessage .group_fieldset>.group_fieldset, .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd, .nav-pills .nav-link.active, .nav-pills .show>.nav-link, .modal .modal-dialog .modal-content .modal-header, .tooltip-wrap>.tooltip-layer, #wrap .group .lnb .m-header, .manual-wrap .manual-hd, .menul-list>li>a, .manual-wrap .manual-cont .manual-tab>li.on>a, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li .badge.badge-circle.calendar_event_course, .course-slider .swiper-slide>h6, .que .formulation {
+            header.ks-header, .course-content ul .section.main .section.img-text>li, .course-content ul .section.main h3.sectionname, .courseboard_container .search_form, .table>thead>tr>th, #block-region-side-pre .card-body .card-title, .course-slider.bg-white .swiper-slide h6, #ub_keyfield, #page-calendar-view .calendartable thead tr th.header, #page-calendar-view .calendartable tbody tr td.today, .courseboard_view .info, .courseboard_view .content, .courseboard_view .subject h3, .courseboard_view .subject h4, .rnb-menu>p, .progress-wrap .progressbar, .study-wrap .study-hd, .quizinfo, .generaltable>thead>tr>th, .que, table.quizreviewsummary th.cell, .generaltable>tbody>tr>th, .generaltable tbody tr:nth-of-type(odd), .modal-content, .courseboard_view .info .file, .courseboard_view .courseboard_comment, .mform>.form-group.row.fitem:not([data-groupname="buttonar"])>.col-md-3, div.editor_atto_toolbar, .path-mod-folder .filemanager>.ygtvitem, .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link, .table>tbody>tr>th, legend, .well.search_form, .local_ubmessage .form-horizontal .control-group, .local_ubmessage .group_fieldset>.group_fieldset, .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd, .nav-pills .nav-link.active, .nav-pills .show>.nav-link, .modal .modal-dialog .modal-content .modal-header, .tooltip-wrap>.tooltip-layer, #wrap .group .lnb .m-header, .manual-wrap .manual-hd, .menul-list>li>a, .manual-wrap .manual-cont .manual-tab>li.on>a, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li .badge.badge-circle.calendar_event_course, .course-slider .swiper-slide>h6, .que .formulation, .course-info .group ul>li .tooltip-evt .tooltip-layer>li {
                 background-color: ${lighter} !important;
             }
             .course-info .group, .course-slider .swiper-slide>div, .card, .course-info .course-bt, .select-course div select, .main-course-list>li, .course-content ul li.section.main, .group .lnb .menu-grp>div>ul>li, .m-fixed-menu, #region-main, #block-region-side-pre .card-body .card-text, .rnb-menu, .course-slider .tooltip-evt>.tooltip-layer, .generaltable>tbody>tr>td, .form-control, .block_ubion_shortcut_group_member .group_fieldset>.group_fieldset, .group .lnb .menu-grp>div>ul>li.ic-arrow-r>ul, .local_ubmessage .group_fieldset, .moodle-dialogue-base .moodle-dialogue-wrap, #wrap .group .lnb, .manual-wrap .manual-txt, .menul-list>li>ul, .manual-wrap .result, .manual-wrap .manual-txt .print-txt, .course-info, #page-calendar-view .container-fluid, .course-info .group select option, .assistant .form-horizontal .control-group .control-label, .layerpop-wrap .layerpop .pop-title {
                 background-color: ${light} !important;
             }
-            #page, #wrap, .bg-white, .login_wrap[data-v-1c64d3c2], .t-center, .block_ubion_shortcut_group_member .group_fieldset, .file-picker .fp-content, .fp-iconview .fp-filename-field .fp-filename, .modal .modal-dialog .modal-content .modal-body, .manual-cont, .table-striped tbody tr:nth-of-type(odd), body .table-striped tbody tr:hover, body .well.search, .layerpop-wrap .layerpop .pop-content {
+            #page, #wrap, .bg-white, .login_wrap[data-v-1c64d3c2], .t-center, .block_ubion_shortcut_group_member .group_fieldset, .file-picker .fp-content, .fp-iconview .fp-filename-field .fp-filename, .modal .modal-dialog .modal-content .modal-body, .manual-cont, .table-striped tbody tr:nth-of-type(odd), body .table-striped tbody tr:hover, body .well.search, .layerpop-wrap .layerpop .pop-content, .layerpop-wrap .layerpop {
                 background-color: ${dark} !important;
             }
             .quick-menu, header.ks-header .fr>ul>li.login-time>a, .group .lnb .menu-grp>div>.more-menu, .course-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .pagination li.active a {
@@ -239,7 +255,7 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
                 color: ${lightFont} !important;
                 border-color: ${lightFont};
             }
-            .container, .course-slider .swiper-slide>div p span, .week-slider .swiper-container .swiper-slide>a, .course-content ul .section.main .section.img-text>li .instancename, .main-course-list>li>p .teacher em, #wrap.login-wrap .left-list div #bluespan, .login h3[data-v-1c64d3c2], .idk label[data-v-1c64d3c2], a[data-v-1c64d3c2], .krbox>header ul[data-v-1c64d3c2], .notice[data-v-1c64d3c2], .table, .table>thead>tr>th, .btn, #block-region-side-pre .card-body .card-title, #ub_keyfield, .table td, .pagination li.active a, .courseboard_view .info span.title, .course-slider .swiper-slide .tooltip-layer span, .generaltable>thead>tr>th, table.quizreviewsummary th.cell, #page-mod-quiz-review .submitbtns .mod_quiz-next-nav, .path-mod-quiz .othernav a, .que .info .questionflag.editable, .generaltable>tbody>tr>th, .path-mod-assign td.submissionnotgraded, .path-mod-assign td.submissionstatussubmitted, .path-mod-assign div.submissionstatussubmitted, .path-mod-assign a:link.submissionstatussubmitted, .path-mod-assign td.earlysubmission, .path-mod-assign div.earlysubmission, .courseboard_view .info .file, .mform>.form-group.row.fitem:not([data-groupname="buttonar"])>.col-md-3, .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link, .table>tbody>tr>th, legend, .group .lnb .menu-grp>div>ul>li.ic-arrow-r>ul>li a, .inline>select, .course-content ul .section.main .section.img-text>li .actions .status, .moodle-dialogue-base .closebutton::after, .yui3-widget-hd>h3, input[type=text], input[type=password], input[type=number], div.editor_atto_toolbar button .icon, .user_progress_detail .modal-content .modal-header, .alert-danger, .path-mod-assign td.latesubmission, .path-mod-assign a:link.latesubmission, .path-mod-assign div.latesubmission, .all-menu>ul>li>a, .group .lnb .menu-grp>div li a, .menul-list>li>a, .menul-list>li, .menul-list>li>ul>li>a, .menul-list>li>ul>li>ul>li>a, .manual-wrap .manual-cont .manual-tab>li.on>a, .manual-wrap .manual-cont .manual-tab>li>a, .manual-wrap .result div, .manual-wrap .result div small, .manual-wrap .result>p, .manual-wrap .manual-txt .print-txt, .manual-wrap .manual-txt .top .ic-print, .d-block, .main-course-list>li>div>span, .main-course-list>li .bt, #page-calendar-view .container-fluid, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li>a .eventname, .bt.point, header.ks-header .fr>ul>li.alram .tooltip-wrap>.tooltip-layer ul li em, .layerpop-wrap .layerpop .pop-content, .layerpop-wrap .layerpop .pop-title, .activity-pop-list>li>div .pop-img-wrap, .activity-pop-list>li>div .pop-cnt-wrap span, .course-slider .swiper-slide>div>strong, .moodle-dialogue-confirm .confirmation-message, .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd.yui3-widget-hd, .que .formulation {
+            .container, .course-slider .swiper-slide>div p span, .week-slider .swiper-container .swiper-slide>a, .course-content ul .section.main .section.img-text>li .instancename, .main-course-list>li>p .teacher em, #wrap.login-wrap .left-list div #bluespan, .login h3[data-v-1c64d3c2], .idk label[data-v-1c64d3c2], a[data-v-1c64d3c2], .krbox>header ul[data-v-1c64d3c2], .notice[data-v-1c64d3c2], .table, .table>thead>tr>th, .btn, #block-region-side-pre .card-body .card-title, #ub_keyfield, .table td, .pagination li.active a, .courseboard_view .info span.title, .course-slider .swiper-slide .tooltip-layer span, .generaltable>thead>tr>th, table.quizreviewsummary th.cell, #page-mod-quiz-review .submitbtns .mod_quiz-next-nav, .path-mod-quiz .othernav a, .que .info .questionflag.editable, .generaltable>tbody>tr>th, .path-mod-assign td.submissionnotgraded, .path-mod-assign td.submissionstatussubmitted, .path-mod-assign div.submissionstatussubmitted, .path-mod-assign a:link.submissionstatussubmitted, .path-mod-assign td.earlysubmission, .path-mod-assign div.earlysubmission, .courseboard_view .info .file, .mform>.form-group.row.fitem:not([data-groupname="buttonar"])>.col-md-3, .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link, .table>tbody>tr>th, legend, .group .lnb .menu-grp>div>ul>li.ic-arrow-r>ul>li a, .inline>select, .course-content ul .section.main .section.img-text>li .actions .status, .moodle-dialogue-base .closebutton::after, .yui3-widget-hd>h3, input[type=text], input[type=password], input[type=number], div.editor_atto_toolbar button .icon, .user_progress_detail .modal-content .modal-header, .alert-danger, .path-mod-assign td.latesubmission, .path-mod-assign a:link.latesubmission, .path-mod-assign div.latesubmission, .all-menu>ul>li>a, .group .lnb .menu-grp>div li a, .menul-list>li>a, .menul-list>li, .menul-list>li>ul>li>a, .menul-list>li>ul>li>ul>li>a, .manual-wrap .manual-cont .manual-tab>li.on>a, .manual-wrap .manual-cont .manual-tab>li>a, .manual-wrap .result div, .manual-wrap .result div small, .manual-wrap .result>p, .manual-wrap .manual-txt .print-txt, .manual-wrap .manual-txt .top .ic-print, .d-block, .main-course-list>li>div>span, .main-course-list>li .bt, #page-calendar-view .container-fluid, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li>a .eventname, .bt.point, header.ks-header .fr>ul>li.alram .tooltip-wrap>.tooltip-layer ul li em, .layerpop-wrap .layerpop .pop-content, .layerpop-wrap .layerpop .pop-title, .activity-pop-list>li>div .pop-img-wrap, .activity-pop-list>li>div .pop-cnt-wrap span, .course-slider .swiper-slide>div>strong, .moodle-dialogue-confirm .confirmation-message, .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd.yui3-widget-hd, .que .formulation, .course-info .group ul>li .tooltip-evt .tooltip-layer>li {
                 color: ${darkFont} !important;
                 border-color: ${darkFont} !important;
             }
@@ -297,16 +313,3 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
     }
 
 });
-
-// DONE
-// 밤에는 다크테마 사용하기 -> "하기" 지우기
-// https://klms.kaist.ac.kr/theme/image.php?theme=oklass39&component=core&rev=1614647021&image=f%2Farchive archive 아이콘 zip 아이콘으로 대체
-// 알림에 동영상 아이콘 대체 안됨
-// 동영상이나 과제 New 아이콘 (N 주위에 사각형) 대체
-// Assignment 기한 글자색 대체
-
-// TODO
-// 다운로드 화면 색
-// 화면 줄였을 때 나타나는 플러스 버튼 색
-// https://klms.kaist.ac.kr/course/view.php?id=117377 에 있는 스위치
-// https://klms.kaist.ac.kr/blocks/course_assistant/index.php 조교신청 화면에 select options 윈도우 크롬에서도 잘 나옴?

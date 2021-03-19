@@ -26,7 +26,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=quiz", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/quiz.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -35,14 +35,14 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_url", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/clip.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_resource", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/file.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -51,7 +51,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon%2Fdisk"]
                 ],
                 new: chrome.runtime.getURL("img/disk.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -60,7 +60,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon%2Fsecret"]
                 ],
                 new: chrome.runtime.getURL("img/lock.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -69,7 +69,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon%2Freply"]
                 ],
                 new: chrome.runtime.getURL("img/answer.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -78,7 +78,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon%2Fnotice"]
                 ],
                 new: chrome.runtime.getURL("img/star.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -87,28 +87,28 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon%2Fnew"]
                 ],
                 new: chrome.runtime.getURL("img/new.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_notice"],
                 ],
                 new: chrome.runtime.getURL("img/announcement.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_qna"],
                 ],
                 new: chrome.runtime.getURL("img/qna.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_default"],
                 ],
                 new: chrome.runtime.getURL("img/board.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -117,7 +117,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/board.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -125,7 +125,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Fpdf"]
                 ],
                 new: chrome.runtime.getURL("img/pdf.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -136,7 +136,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=mod_folder", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/folder.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -155,7 +155,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=mod_vod", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/video.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -167,7 +167,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Fwav"]
                 ],
                 new: chrome.runtime.getURL("img/audio.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -175,7 +175,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Fspreadsheet"]
                 ],
                 new: chrome.runtime.getURL("img/excel.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -183,7 +183,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Fdocument"]
                 ],
                 new: chrome.runtime.getURL("img/word.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -191,7 +191,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Fpowerpoint"]
                 ],
                 new: chrome.runtime.getURL("img/powerpoint.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -211,7 +211,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Feps"]
                 ],
                 new: chrome.runtime.getURL("img/image.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -219,7 +219,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Ftext"]
                 ],
                 new: chrome.runtime.getURL("img/text.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -227,7 +227,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=f%2Farchive"]
                 ],
                 new: chrome.runtime.getURL("img/zip.svg"),
-                height: "28px"
+                // height: "28px"
             }
         ]
 
@@ -236,6 +236,7 @@ window.addEventListener("load", () => {
                 if(replace.old.some(substrSet=>substrSet.every(substr=>img.src.includes(substr)))) {
                     img.src = replace.new;
                     if (replace.height) img.style.height = replace.height;
+                    if (img.parentElement.parentElement.className == "files") img.style.height = "28px";
                 }
             })
         }
@@ -267,9 +268,16 @@ window.addEventListener("load", () => {
         }
     }
 
+    function bindKey(k, f) {
+        document.addEventListener('keydown', function(event) {
+            if (event.key == k) {
+                f();
+            }
+        });
+    }
 
-    var video = document.getElementsByTagName("video")[0]
-    if(video){
+    if(pageIs("vod")){
+        var video = document.getElementsByTagName("video")[0]
         //var isMac = navigator.platform=="MacIntel"
 
         var now = 0;
@@ -285,43 +293,38 @@ window.addEventListener("load", () => {
             now += dt;
             video.currentTime = now;
         }
-        
-        document.addEventListener('keydown', function (event) {
-            switch(event.key) {
-                case 'm': break;
-                case 'f': break;
-                case "ArrowRight":
-                    if(longJumpPressed && settings.longJumpCheck) jump(settings.longJumpSeconds);
-                    else if (!longJumpPressed && settings.jumpCheck) jump(settings.jumpSeconds);
-                    break;
-                case "ArrowLeft":
-                    if(longJumpPressed && settings.longJumpCheck) jump(-settings.longJumpSeconds);
-                    else if (!longJumpPressed && settings.jumpCheck) jump(-settings.jumpSeconds);
-                    break;
-                case "ArrowUp": break;
-                case "ArrowDown": break;
-                case " ": break;
-                case "0":
-                case "1":
-                case "2":
-                case "3":
-                case "4":
-                case "5":
-                case "6":
-                case "7":
-                case "8":
-                case "9":
-                    break;
-                case 'z':
-                    if(settings.speedControlCheck) video.playbackRate = 1;
-                    break;
-                case 'x':
-                    if(settings.speedControlCheck) video.playbackRate -= settings.speedControlUnit;
-                    break;
-                case 'c':
-                    if(settings.speedControlCheck) video.playbackRate += settings.speedControlUnit;
-                    break;
-            }
+
+        bindKey("ArrowRight", () => {
+            if(longJumpPressed && settings.longJumpCheck) jump(settings.longJumpSeconds);
+            else if (!longJumpPressed && settings.jumpCheck) jump(settings.jumpSeconds);
+        });
+        bindKey("ArrowLeft", () => {
+            if(longJumpPressed && settings.longJumpCheck) jump(-settings.longJumpSeconds);
+            else if (!longJumpPressed && settings.jumpCheck) jump(-settings.jumpSeconds);
+        });
+        bindKey("z", () => {
+            if(settings.speedControlCheck) video.playbackRate = 1;
+        });
+        bindKey("x", () => {
+            if(settings.speedControlCheck) video.playbackRate -= settings.speedControlUnit;
+        });
+        bindKey("c", () => {
+            if(settings.speedControlCheck) video.playbackRate += settings.speedControlUnit;
+        });
+    }
+
+    if (pageIs("roomWeekAll")) {
+
+        const w = getWeek();
+
+        bindKey("Enter", () => {
+            if(settings.enterToWeekCheck){
+                var section = document.getElementById("section-"+w);
+                console.log(section);
+                if (section) {
+                    window.scroll(0, section.offsetTop - 50);
+                }
+            } 
         });
     }
 

@@ -7,8 +7,10 @@ var settings = {
     longJumpSeconds: 60,
     speedControlCheck: true,
     speedControlUnit: 0.2,
-    darkAtNightCheck: false,
+    darkAtNightCheck: true,
     redirectToLoginCheck: true,
+    weekAllCheck: true,
+    enterToWeekCheck: true,
     language: "kor",
     themes: [
         // { // https://colorswall.com/palette/34822/
@@ -107,11 +109,70 @@ function getTheme(themeName){
 }
 
 var settingsKeys = Object.keys(settings);
-var settingsKeysTextAndCheckboxOnly = ["jumpCheck", "jumpSeconds", "longJumpCheck", "longJumpSeconds", "speedControlCheck", "speedControlUnit", "darkAtNightCheck",  "redirectToLoginCheck"];
+var settingsKeysTextAndCheckboxOnly = ["jumpCheck", "jumpSeconds", "longJumpCheck", "longJumpSeconds", "speedControlCheck", "speedControlUnit", "darkAtNightCheck",  "redirectToLoginCheck", "weekAllCheck", "enterToWeekCheck"];
 var dependencies = {
     jumpCheck: ["jumpSeconds", "jumpLabel"],
     longJumpCheck: ["longJumpSeconds", "longJumpLabel"],
     speedControlCheck: ["speedControlUnit", "speedControlLabel"],
     darkAtNightCheck: [],
-    redirectToLoginCheck: []
+    redirectToLoginCheck: [],
+    weekAllCheck: [],
+    enterToWeekCheck: []
+}
+
+function isIntStr(a) {
+    return Number.isInteger(Number(a))
+}
+
+function pageIs(name) {
+    href = window.location.href;
+    switch (name) {
+        case "roomWeekNone": // lecture room without week selection
+            return href.startsWith("https://klms.kaist.ac.kr/course/view.php?id=") && isIntStr(href.substring(44));
+        case "roomWeekAll": 
+            return href.startsWith("https://klms.kaist.ac.kr/course/view.php?id=") && href.endsWith("&section=0") && isIntStr(href.substring(44, href.length-10));
+        case "landing": 
+            return href.startsWith("https://klms.kaist.ac.kr/login/ssologin.php");
+        case "vod":
+            return document.getElementsByTagName("video")[0] != undefined;
+    }
+}
+
+const semesters = [
+    { year: 2018, term: 1, start: new Date(2018, 2-1, 26), end: new Date(2018,6-1,18) },
+    { year: 2018, term: 2, start: new Date(2018, 6-1, 25), end: new Date(2018,8-1,10) },
+    { year: 2018, term: 3, start: new Date(2018, 8-1, 27), end: new Date(2018,12-1,14) },
+    { year: 2018, term: 4, start: new Date(2018, 12-1, 17), end: new Date(2019,1-1,25) },
+
+    { year: 2019, term: 1, start: new Date(2019, 2-1, 25), end: new Date(2019,6-1,14) },
+    { year: 2019, term: 2, start: new Date(2019, 6-1, 24), end: new Date(2019,8-1,9) },
+    { year: 2019, term: 3, start: new Date(2019, 9-1, 2), end: new Date(2019,12-1,20) },
+    { year: 2019, term: 4, start: new Date(2019, 12-1, 23), end: new Date(2020,1-1,31) },
+
+    { year: 2020, term: 1, start: new Date(2020, 3-1, 16), end: new Date(2020,7-1,3) },
+    { year: 2020, term: 2, start: new Date(2020, 7-1, 6), end: new Date(2020,8-1,21) },
+    { year: 2020, term: 3, start: new Date(2020, 8-1, 31), end: new Date(2020,12-1,18) },
+    { year: 2020, term: 4, start: new Date(2020, 12-1, 21), end: new Date(2021,1-1,29) },
+
+    { year: 2021, term: 1, start: new Date(2021, 3-1, 1), end: new Date(2021,6-1,18) },
+    { year: 2021, term: 2, start: new Date(2021, 6-1, 28), end: new Date(2021,8-1,20) },
+    { year: 2021, term: 3, start: new Date(2021, 8-1, 30), end: new Date(2021,12-1,17) },
+    { year: 2021, term: 4, start: new Date(2021, 12-1, 20), end: new Date(2022,1-1,28) },
+
+    // { year: 2022, term: 1, start: new Date(2022, 2-1, 28), end: new Date(2022,6-1,18) },
+    // { year: 2022, term: 2, start: new Date(2022, 6-1, 28), end: new Date(2022,8-1,20) },
+    // { year: 2022, term: 3, start: new Date(2022, 8-1, 30), end: new Date(2022,12-1,17) },
+    // { year: 2022, term: 4, start: new Date(2022, 12-1, 20), end: new Date(2023,1-1,28) },
+    
+];
+
+function getWeek() {
+    const now = new Date();
+    for(s of semesters) {
+        if (s.start <= now && now <= s.end) return Math.ceil((now-s.start)/7/24/60/60/1000);
+    }
+}
+
+function getSemesterString(s) {
+    return `${s.year} ${["Spring", "Summer", "Fall", "Winter"][s.term-1]}`;
 }

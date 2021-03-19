@@ -5,8 +5,6 @@
     border-radius: 3px;
 }
 
-.original {
-}
 .line1 {
     width: 31px;
     height: 31px;
@@ -32,6 +30,6 @@
     display: none;
     transform:
         translateY(-70px)
-        translateX(350px);
+        translateX(390px);
     position: absolute;
 }
