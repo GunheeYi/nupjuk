@@ -7,11 +7,11 @@ https://klms.kaist.ac.kr/theme/image.php?theme=oklass39&component=core&rev=16146
 Assignment 기한 글자색 대체
 강의실 입장 시 현재 주차 대신 전체 주차 표시
 동영상 배속 시 책임 고지
-ALL 선택 시 현재 주차로 스크롤하는 버튼 추가
 주차 이동 옵션 추가
 https://klms.kaist.ac.kr/course/view.php?id=117377 에 있는 스위치
 화면 줄였을 때 나타나는 플러스 버튼 색
-
+알림 0개 시 빨간색 원 숨기기 옵션 추가
+다운로드 버튼 표시 여부 옵션 추가
 
 TODO
 다운로드 화면 색

@@ -3,13 +3,18 @@
 function showText(){
     const isMac = navigator.platform=="MacIntel";
     const altSymbol = isMac ? "⌥" : "Alt";
-    const enterSymbol = isMac ? "↩" : "↵";
+    const enterSymbol = isMac ? "↵" : "↵";
     var texts = [
         // {
         //     id: "vodControl",
         //     kor: "VOD 제어",
         //     eng: "VOD Control"
         // },
+        {
+            id: "vodControlTitle",
+            kor: '동영상 제어 <span style="text-decoration:none; font-size: 12px;">⚠️ 제작자는 동영상 임의 조작에 따른 결과에 책임을 지지 않습니다.</span>',
+            eng: 'VOD Control <span style="text-decoration:none; font-size: 12px;">⚠️ The user assumes all responsibility for controlling VODs.</span>'
+        },
         {
             id: "jumpLabel",
             kor: " ←/→를 눌러 점프:",
@@ -32,13 +37,8 @@ function showText(){
         },
         {
             id: "speedControlLabel",
-            kor: ' Z/X/C를 눌러 재생속도 조절<sup data-toggle="tooltip" title="1. (Shift + ←/→)를 눌러 조절하는 기능이 이미 있습니다.">!</sup>:',
+            kor: ' Z/X/C를 눌러 재생속도 조절<sup data-toggle="tooltip" title="(Shift + ←/→)를 눌러 조절하는 기능이 이미 있습니다.">!</sup>:',
             eng: ' Press Z/X/C to control speed<sup data-toggle="tooltip" title="You can control playback speed through (Shift + ←/→) by default.">!</sup> by'
-        },
-        {
-            id: "vodControlTitle",
-            kor: '동영상 제어 <span style="text-decoration:none; font-size: 12px;">⚠️ 제작자는 동영상 임의 조작에 따른 결과에 책임을 지지 않습니다.</span>',
-            eng: 'VOD Control <span style="text-decoration:none; font-size: 12px;">⚠️ The user assumes all responsibility for controlling VODs.</span>'
         },
         {
             id: "miscellaneousTitle",
@@ -52,8 +52,8 @@ function showText(){
         },
         {
             id: "enterToWeekLabel",
-            kor: ` ${enterSymbol}를 눌러 현재 주차로 이동`,
-            eng:  ` Press ${enterSymbol} to scroll to current week`
+            kor: ` ${enterSymbol}를 눌러 현재 주차로 이동<a id="weeksSwitch" href="#" style="text-decoration: none;"><sup>!</sup></a>`,
+            eng:  ` Press ${enterSymbol} to scroll to current week<a id="weeksSwitch" href="#" style="text-decoration: none;"><sup>!</sup></a>`
         },
         {
             id: "darkAtNightLabel",
@@ -64,6 +64,16 @@ function showText(){
             id: "redirectToLoginLabel",
             kor: " 로그인 페이지로 자동 리다이렉트",
             eng: " Automatic redirect to login"
+        },
+        {
+            id: "cleanNotificationLabel",
+            kor: " 알림 0개일 때 빨간색 원 숨기기",
+            eng: " Hide red circle when 0 notifications"
+        },
+        {
+            id: "downloadLabel",
+            kor: ' 다운로드 버튼 표시<sup data-toggle="tooltip" title="개발하는 현재(2021.03.19) 강의자료의 허용되지 않은 다운로드가 불가합니다.">!</sup>',
+            eng: ' Show download buttons<sup data-toggle="tooltip" title="Unallowed download of lecture materials is blocked at the moment of development(2021.03.19).">!</sup>'
         },
         {
             id: "references",
@@ -96,7 +106,8 @@ function activateSwitches() {
     document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
     document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
     document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
-    document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html")}));
+    document.getElementById("weeksSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_weeks")}));
+    document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_resources")}));
 }
 
 window.onload = function() {

@@ -1,6 +1,11 @@
 // Written by 2021 Gunhee Yi (gunny@kaist.ac.kr).
-window.addEventListener("load", () => {
 
+window.addEventListener("load", () => {
+    var a = document.querySelector("header.ks-header .fr>ul>li.alram .tooltip-wrap>a>span");
+    if(a && (a.innerHTML!="0" || !settings.cleanNotificationCheck)) a.style.visibility = "visible";
+    
+
+    // Vectorize icons
     function replaceImgs(){
         var imgs = document.getElementsByTagName("img");
         var imgReplaces = [
@@ -91,6 +96,15 @@ window.addEventListener("load", () => {
             },
             {
                 old: [
+                    ["klms.kaist.ac.kr/theme/image.php/oklass39/courseboard/", "/icon/up"],
+                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=courseboard", "image=icon%2Fup"],
+                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon%2Fup"]
+                ],
+                new: chrome.runtime.getURL("img/updated.svg"),
+                // height: "28px"
+            },
+            {
+                old: [
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_notice"],
                 ],
                 new: chrome.runtime.getURL("img/announcement.svg"),
@@ -105,15 +119,8 @@ window.addEventListener("load", () => {
             },
             {
                 old: [
-                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_default"],
-                ],
-                new: chrome.runtime.getURL("img/board.svg"),
-                // height: "28px"
-            },
-            {
-                old: [
                     ["klms.kaist.ac.kr/theme/image.php/oklass39/courseboard/"],
-                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=courseboard"],
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_default"],
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/board.svg"),
@@ -228,6 +235,13 @@ window.addEventListener("load", () => {
                 ],
                 new: chrome.runtime.getURL("img/zip.svg"),
                 // height: "28px"
+            },
+            {
+                old: [
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=core", "image=i%2Fmarker"]
+                ],
+                new: chrome.runtime.getURL("img/unknown.svg"),
+                // height: "28px"
             }
         ]
 
@@ -241,7 +255,6 @@ window.addEventListener("load", () => {
             })
         }
     }
-
     if(settings.themeName!="original"){
         
         replaceImgs();
@@ -250,24 +263,20 @@ window.addEventListener("load", () => {
         observer.observe(document.body, { childList: true, subtree: true });
     }
 
-    for( let link of document.querySelectorAll("div.activityinstance a.aalink") ) {
-        if(link.href.includes("klms.kaist.ac.kr/mod/resource/view.php")) {
-            // downloadBtn = document.createElement("a");
-            // downloadBtn.href = link.href;
-            // downloadImg = document.createElement("img");
-            // downloadImg.src = chrome.runtime.getURL("img/download.svg");
-            // downloadImg.style.height = "28px";
-            // downloadBtn.append(downloadImg);
-            // link.parentElement.append(downloadBtn);
-            link.parentElement.innerHTML += `
-                &nbsp;
-                <a href="${link.href+"&closeAfterDownload=true"}" target="_blank">
-                    <img src="${chrome.runtime.getURL("img/download.svg")}" style="height: 20px;">
-                </a>
-            `;
+    // Make download buttons
+    if(settings.downloadCheck){
+        for( let link of document.querySelectorAll("div.activityinstance a.aalink") ) {
+            if(link.href.includes("klms.kaist.ac.kr/mod/resource/view.php")) {
+                link.parentElement.innerHTML += `
+                    &nbsp;
+                    <a href="${link.href+"&closeAfterDownload=true"}" target="_blank">
+                        <img src="${chrome.runtime.getURL("img/download.svg")}" style="height: 20px;">
+                    </a>
+                `;
+            }
         }
     }
-
+    
     function bindKey(k, f) {
         document.addEventListener('keydown', function(event) {
             if (event.key == k) {

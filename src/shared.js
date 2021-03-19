@@ -11,6 +11,8 @@ var settings = {
     redirectToLoginCheck: true,
     weekAllCheck: true,
     enterToWeekCheck: true,
+    cleanNotificationCheck: true,
+    downloadCheck: false,
     language: "kor",
     themes: [
         // { // https://colorswall.com/palette/34822/
@@ -109,7 +111,7 @@ function getTheme(themeName){
 }
 
 var settingsKeys = Object.keys(settings);
-var settingsKeysTextAndCheckboxOnly = ["jumpCheck", "jumpSeconds", "longJumpCheck", "longJumpSeconds", "speedControlCheck", "speedControlUnit", "darkAtNightCheck",  "redirectToLoginCheck", "weekAllCheck", "enterToWeekCheck"];
+var settingsKeysTextAndCheckboxOnly = ["jumpCheck", "jumpSeconds", "longJumpCheck", "longJumpSeconds", "speedControlCheck", "speedControlUnit", "darkAtNightCheck",  "redirectToLoginCheck", "weekAllCheck", "enterToWeekCheck", "downloadCheck", "cleanNotificationCheck"];
 var dependencies = {
     jumpCheck: ["jumpSeconds", "jumpLabel"],
     longJumpCheck: ["longJumpSeconds", "longJumpLabel"],
@@ -117,7 +119,9 @@ var dependencies = {
     darkAtNightCheck: [],
     redirectToLoginCheck: [],
     weekAllCheck: [],
-    enterToWeekCheck: []
+    enterToWeekCheck: [],
+    downloadCheck: [],
+    cleanNotificationCheck: []
 }
 
 function isIntStr(a) {
