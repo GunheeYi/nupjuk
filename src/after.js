@@ -119,6 +119,14 @@ window.addEventListener("load", () => {
             },
             {
                 old: [
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=mod_forum", "image=icon"],
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=forum", "image=icon"]
+                ],
+                new: chrome.runtime.getURL("img/forum.svg"),
+                // height: "28px"
+            },
+            {
+                old: [
                     ["klms.kaist.ac.kr/theme/image.php/oklass39/courseboard/"],
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_default"],
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon"]
@@ -278,9 +286,9 @@ window.addEventListener("load", () => {
     }
     
     function bindKey(k, f) {
-        document.addEventListener('keydown', function(event) {
-            if (event.key == k) {
-                f();
+        document.addEventListener('keydown', function(e) {
+            if (e.key == k) {
+                f(e);
             }
         });
     }
@@ -292,32 +300,33 @@ window.addEventListener("load", () => {
         var now = 0;
         var trackNow = setInterval(function(){
             now = video.currentTime;
-        }, 500)
+        }, 500);
         
-        var longJumpPressed = false;
-        window.onkeydown = function(e){ if(e.which==18) longJumpPressed = true; };
-        window.onkeyup = function(e){ if(e.which==18) longJumpPressed = false; };
+        // var longJumpPressed = false;
+        // window.addEventListener("keydown", (e)=>{ if(e.which==18) longJumpPressed = true; console.log(e)});
+        // window.addEventListener("keyup", (e)=>{ if(e==18) longJumpPressed = false; });
+        // window.addEventListener("focus", ()=>longJumpPressed=false);
         
         function jump(dt){
             now += dt;
             video.currentTime = now;
         }
 
-        bindKey("ArrowRight", () => {
-            if(longJumpPressed && settings.longJumpCheck) jump(settings.longJumpSeconds);
-            else if (!longJumpPressed && settings.jumpCheck) jump(settings.jumpSeconds);
+        bindKey("ArrowRight", (e) => {
+            if(e.altKey && settings.longJumpCheck) jump(settings.longJumpSeconds);
+            else if (!e.altKey && settings.jumpCheck) jump(settings.jumpSeconds);
         });
-        bindKey("ArrowLeft", () => {
-            if(longJumpPressed && settings.longJumpCheck) jump(-settings.longJumpSeconds);
-            else if (!longJumpPressed && settings.jumpCheck) jump(-settings.jumpSeconds);
+        bindKey("ArrowLeft", (e) => {
+            if(e.altKey && settings.longJumpCheck) jump(-settings.longJumpSeconds);
+            else if (!e.altKey && settings.jumpCheck) jump(-settings.jumpSeconds);
         });
-        bindKey("z", () => {
+        bindKey("z", (e) => {
             if(settings.speedControlCheck) video.playbackRate = 1;
         });
-        bindKey("x", () => {
+        bindKey("x", (e) => {
             if(settings.speedControlCheck) video.playbackRate -= settings.speedControlUnit;
         });
-        bindKey("c", () => {
+        bindKey("c", (e) => {
             if(settings.speedControlCheck) video.playbackRate += settings.speedControlUnit;
         });
     }

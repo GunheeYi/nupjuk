@@ -12,7 +12,7 @@ function showText(){
         // },
         {
             id: "vodControlTitle",
-            kor: '동영상 제어 <span style="text-decoration:none; font-size: 12px;">⚠️ 제작자는 동영상 임의 조작에 따른 결과에 책임을 지지 않습니다.</span>',
+            kor: '동영상 제어 <span style="text-decoration:none; font-size: 12px;">⚠️ 동영상 임의 조작에 따른 결과의 모든 책임은 사용자에게 있습니다.</span>',
             eng: 'VOD Control <span style="text-decoration:none; font-size: 12px;">⚠️ The user assumes all responsibility for controlling VODs.</span>'
         },
         {
@@ -76,6 +76,11 @@ function showText(){
             eng: ' Show download buttons<sup data-toggle="tooltip" title="Unallowed download of lecture materials is blocked at the moment of development(2021.03.19).">!</sup>'
         },
         {
+            id: "versions",
+            kor: ' <a id="versionsSwitch" href="#" style="text-decoration: none;">업데이트 이력</a>',
+            eng: ' <a id="versionsSwitch" href="#" style="text-decoration: none;">Release Notes</a>'
+        },
+        {
             id: "references",
             kor: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">외부리소스 출처</a>',
             eng: ' <a id="resourcesSwitch" href="#" style="text-decoration: none;">External resource referenes</a>'
@@ -107,6 +112,7 @@ function activateSwitches() {
     document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
     document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
     document.getElementById("weeksSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_weeks")}));
+    document.getElementById("versionsSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_versions")}));
     document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_resources")}));
 }
 
