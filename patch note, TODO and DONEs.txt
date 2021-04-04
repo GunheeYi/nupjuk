@@ -12,6 +12,12 @@ https://klms.kaist.ac.kr/course/view.php?id=117377 에 있는 스위치
 화면 줄였을 때 나타나는 플러스 버튼 색
 알림 0개 시 빨간색 원 숨기기 옵션 추가
 다운로드 버튼 표시 여부 옵션 추가
+[official]
+Colored/replaced some omitted elements/icons.
+Option to show download buttons.
+Option to set week to ALL when entering lecture rooms.
+Option to press ↵ to scroll to current week.
+Option to hide red circle when 0 notifications.
 
 TODO
 다운로드 화면 색
