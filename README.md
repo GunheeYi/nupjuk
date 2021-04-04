@@ -1,7 +1,7 @@
 # Nupjuk!
 Version 2.0. Mar 1st, 2021.\
 Version 2.1. Mar 19th, 2021.\
-Version 2.1.1. Apr 2nd, 2021.\
+Version 2.1.1. Apr 2nd, 2021.
 ## KLMS. Redesigned.
 
 - Customize seconds to jump when watching VODs. Press Alt or ⌥ together to perform long jump. Modified from the predecessor: KLMS VOD Controller.
