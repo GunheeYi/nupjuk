@@ -44,7 +44,8 @@ window.addEventListener("load", () => {
             },
             {
                 old: [
-                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_resource", "image=icon"]
+                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_resource", "image=icon"],
+                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=core", "image=f%2Funknown-24"]
                 ],
                 new: chrome.runtime.getURL("img/file.svg"),
                 // height: "28px"
@@ -123,6 +124,14 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=forum", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/forum.svg"),
+                // height: "28px"
+            },
+            {
+                old: [
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=mod_feedback", "image=icon"],
+                    ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=feedback", "image=icon"]
+                ],
+                new: chrome.runtime.getURL("img/checkbox.svg"),
                 // height: "28px"
             },
             {
