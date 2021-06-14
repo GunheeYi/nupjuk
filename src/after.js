@@ -21,7 +21,7 @@ window.addEventListener("load", () => {
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=mod_assign", "image=icon"]
                 ],
                 new: chrome.runtime.getURL("img/text.svg"),
-                height: "28px"
+                // height: "28px"
             },
             {
                 old: [
@@ -136,9 +136,15 @@ window.addEventListener("load", () => {
             },
             {
                 old: [
-                    ["klms.kaist.ac.kr/theme/image.php/oklass39/courseboard/"],
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_default"],
                     ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon"]
+                ],
+                new: chrome.runtime.getURL("img/board.svg"),
+                // height: "28px"
+            },
+            {
+                old: [
+                    ["klms.kaist.ac.kr/theme/image.php/oklass39/courseboard/"]
                 ],
                 new: chrome.runtime.getURL("img/board.svg"),
                 // height: "28px"
