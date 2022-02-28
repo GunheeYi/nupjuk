@@ -137,7 +137,8 @@ window.addEventListener("load", () => {
             {
                 old: [
                     ["klms.kaist.ac.kr/theme/image.php", "theme=oklass39", "component=courseboard", "image=icon_default"],
-                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon"]
+                    ["klms.kaist.ac.kr/theme/image.php?theme=oklass39", "component=mod_courseboard", "image=icon"],
+                    ["https://klms.kaist.ac.kr/theme/image.php/oklass39/mod_courseboard/1645516765/icon"]
                 ],
                 new: chrome.runtime.getURL("img/board.svg"),
                 // height: "28px"
@@ -344,6 +345,13 @@ window.addEventListener("load", () => {
         bindKey("c", (e) => {
             if(settings.speedControlCheck) video.playbackRate += settings.speedControlUnit;
         });
+    }
+
+    if (pageIs("room")) {
+        const button = document.querySelector("#wrap > section > div.course-info > div > ul:nth-child(3) > li:nth-child(3) > span");
+        if (button) {
+            button.setAttribute('onclick', `location.href='https://klms.kaist.ac.kr/user/index.php?id=${/id=(\d+)/.exec(href)[1]}'`);
+        }
     }
 
     if (pageIs("roomWeekAll")) {

@@ -131,6 +131,8 @@ function isIntStr(a) {
 function pageIs(name) {
     href = window.location.href;
     switch (name) {
+        case "room":
+            return href.startsWith("https://klms.kaist.ac.kr/course/view.php?id=")
         case "roomWeekNone": // lecture room without week selection
             return href.startsWith("https://klms.kaist.ac.kr/course/view.php?id=") && isIntStr(href.substring(44));
         case "roomWeekAll": 
@@ -163,11 +165,15 @@ const semesters = [
     { year: 2021, term: 3, start: new Date(2021, 8-1, 30), end: new Date(2021,12-1,17) },
     { year: 2021, term: 4, start: new Date(2021, 12-1, 20), end: new Date(2022,1-1,28) },
 
-    // { year: 2022, term: 1, start: new Date(2022, 2-1, 28), end: new Date(2022,6-1,18) },
-    // { year: 2022, term: 2, start: new Date(2022, 6-1, 28), end: new Date(2022,8-1,20) },
-    // { year: 2022, term: 3, start: new Date(2022, 8-1, 30), end: new Date(2022,12-1,17) },
-    // { year: 2022, term: 4, start: new Date(2022, 12-1, 20), end: new Date(2023,1-1,28) },
-    
+    { year: 2022, term: 1, start: new Date(2022, 2-1, 28), end: new Date(2022,6-1,17) },
+    { year: 2022, term: 2, start: new Date(2022, 6-1, 27), end: new Date(2022,8-1,19) },
+    { year: 2022, term: 3, start: new Date(2022, 8-1, 29), end: new Date(2022,12-1,16) },
+    { year: 2022, term: 4, start: new Date(2022, 12-1, 19), end: new Date(2023,1-1,27) },
+
+    // { year: 2023, term: 1, start: new Date(2022, 2-1, 28), end: new Date(2023,6-1,18) },
+    // { year: 2023, term: 2, start: new Date(2022, 6-1, 28), end: new Date(2023,8-1,20) },
+    // { year: 2023, term: 3, start: new Date(2022, 8-1, 30), end: new Date(2023,12-1,17) },
+    // { year: 2023, term: 4, start: new Date(2022, 12-1, 20), end: new Date(2024,1-1,28) },
 ];
 
 function getWeek() {

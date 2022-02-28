@@ -87,8 +87,8 @@ function showText(){
         },
         {
             id: "writtenBy",
-            kor: ' 2021 <a id="linksSwitch" href="#" style="text-decoration: none;">이건희</a>',
-            eng: ' 2021 <a id="linksSwitch" href="#" style="text-decoration: none;">Gunhee Yi</a>'
+            kor: ' 2022 <a id="linksSwitch" href="#" style="text-decoration: none;">이건희</a>',
+            eng: ' 2022 <a id="linksSwitch" href="#" style="text-decoration: none;">Gunhee Yi</a>'
         }
     ]
     texts.forEach(text => document.getElementById(text.id).innerHTML = text[settings.language]);
@@ -99,18 +99,19 @@ function activateSwitches() {
         $('[data-toggle="tooltip"]').tooltip()
     });
 
-    $("#linksSwitch").on("click", function() {
-        if($("#links").css("display") == "none"){
-            $("#links").show();
-        } else {
-            $("#links").hide();
-        }
-    });
+    // $("#linksSwitch").on("click", function() {
+    //     if($("#links").css("display") == "none"){
+    //         $("#links").show();
+    //     } else {
+    //         $("#links").hide();
+    //     }
+    // });
 
     document.getElementById("title").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi/nupjuk"}));
-    document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
-    document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
-    document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
+    // document.getElementById("email").addEventListener('click', () => chrome.tabs.create({active: true, url: "mailto:gunny@kaist.ac.kr"}));
+    // document.getElementById("github").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://github.com/GunheeYi"}));
+    // document.getElementById("instagram").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://instagram.com/gunhee_yi"}));
+    document.getElementById("linksSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: "https://gunh.ee/"}));
     document.getElementById("weeksSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_weeks")}));
     document.getElementById("versionsSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_versions")}));
     document.getElementById("resourcesSwitch").addEventListener('click', () => chrome.tabs.create({active: true, url: chrome.runtime.getURL("memo.html#title_resources")}));
