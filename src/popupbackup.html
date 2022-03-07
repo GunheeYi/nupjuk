@@ -1,0 +1,218 @@
+<!-- Written by 2021 Gunhee Yi (gunny@kaist.ac.kr). -->
+<!-- chrome-extension://hfjpgpohfjdlfkbicfohnjbbllkpfibj/popup.html -->
+
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <link href="bootstrap.min.css" rel="stylesheet">
+      <script type="text/javascript" src="jquery-3.5.1.slim.min.js"></script>
+      <script type="text/javascript" src="bootstrap.bundle.min.js"></script>
+      <link rel="stylesheet" href="popup.css">
+    </head>
+
+
+    <body>
+      <style>
+        input[type=color] {
+          width: 25px;
+          height: 25px;
+          border: 1px solid rgb(118,118,118);
+          /* border: 1px solid red; */
+          border-radius: 4px;
+          padding: 0;
+        }
+        .row>* {
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+        .mr-0 {
+          margin-right: 0;
+          margin-left: auto;
+        }
+        .picker-container {
+          position: relative;
+        }
+        .picker1 {
+          position: absolute;
+          left: 0px;
+        }
+        .picker2 {
+          position: absolute;
+          left: 50px;
+        }
+        .picker3 {
+          position: absolute;
+          left: 100px;
+        }
+      </style>
+
+      
+
+      <div class="" style="width: 600px; padding: 10px 25px 35px 25px;">
+        <div class="row">
+          <div class="col-5">
+            <h4 class="m-2 align-middle float-start">
+              <a href="#" style="color: black; text-decoration: none;">
+                <img id="nupjuk" src="img/nupjuk48.png" style="height: 28px; transform: translateY(-1.5px);"/><span id="title"> Nupjuk! </span><span style="font-size: 12px;">v2.2.0</span>
+              </a>
+            </h4>
+          </div>
+          <div class="col-7">
+            <span id="themeSelection" class="m-2 align-middle float-end">
+              <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="radio" class="btn-check" id="radioOriginal" name="themeRadios" value="original">
+                <label class="btn btn-outline-primary themeLabel original" for="radioOriginal" title="Do not override styles and icons" style="width:25px; height:25px; background-color: #ffffff; border-color: #000000;">
+                  <div class="line1"></div>
+                  <div class="line2"></div>
+                </label>
+              </div>
+            </span>
+          </div>
+        </div>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          
+        </div>
+  
+        <div class="mx-2" style="font-size: small;">
+          
+          <div class="row mt-2">
+            <h6 id="vodControlTitle"></h6> 
+            <div class="col-6">
+              <input class="form-check-input" type="checkbox" id="jumpCheck">
+              <label class="form-check-label" for="jumpCheck" id="jumpLabel"></label>
+            </div>
+            <div class="col-6">
+              ±
+              <input type="text" id="jumpSeconds" class="input-small" style="width:40px">
+              <label for="jumpSeconds" id="jumpSecondsLabel"></label>
+            </div>
+            <div class="col-6">
+              <input class="form-check-input" type="checkbox" id="longJumpCheck">
+              <label class="form-check-label" for="longJumpCheck" id="longJumpLabel"></label>
+            </div>
+            <div class="col-6">
+              ±
+              <input type="text" id="longJumpSeconds" class="input-small" style="width:40px">
+              <label for="longJumpSeconds" id="longJumpSecondsLabel"></label>
+            </div>
+            <div class="col-6">
+              <input class="form-check-input" type="checkbox" id="speedControlCheck">
+              <label class="form-check-label" for="speedControlCheck" id="speedControlLabel"></label>
+            </div>
+            <div class="col-6">
+              ±
+              <input type="text" id="speedControlUnit" class="input-small" style="width:40px">
+              <label for="speedControlUnit">x</label>
+            </div>
+          </div>
+
+          <div class="row mt-2 mb-3">
+            <h6 id="colorTitle"></h6> 
+            <div class="col-4" style="align-items: center;">
+              <input class="form-check-input" type="checkbox" id="overrideLightCheck">
+              <label class="form-check-label" for="overrideLightCheck" id="overrideLightLabel"></label>
+            </div>
+            <div class="col-8 align-middle picker-container">
+              <div class="picker1">
+                <input class="form-check-input align-middle" type="color" id="lightLight">
+                <label class="form-check-label align-middle" for="lightLight" id="lightLightLabel">light&nbsp;&nbsp;&nbsp;</label>
+              </div>
+              <div class="picker2">
+                <input class="form-check-input align-middle" type="color" id="lightDark">
+                <label class="form-check-label align-middle" for="lightDark" id="lightDarkLabel">dark&nbsp;&nbsp;&nbsp;</label>
+              </div>
+              <div class="picker3">
+                <input class="form-check-input align-middle" type="color" id="lightDarker">
+                <label class="form-check-label align-middle" for="lightDarker" id="lightDarkerLabel">darker</label>
+              </div>
+
+              
+              
+            </div>
+
+            <div class="col-4" style="align-items: center;">
+              <input class="form-check-input" type="checkbox" id="overrideDarkCheck">
+              <label class="form-check-label" for="overrideDarkCheck" id="overrideDarkLabel"></label>
+            </div>
+            <div class="col-8 align-middle">
+              <div>
+                <input class="form-check-input align-middle" type="color" id="darkLighter">
+                <label class="form-check-label align-middle" for="darkLighter" id="darkLighterLabel">lighter&nbsp;&nbsp;&nbsp;</label>
+                <input class="form-check-input align-middle" type="color" id="darkLight">
+                <label class="form-check-label align-middle" for="darkLight" id="darkLightLabel">light&nbsp;&nbsp;&nbsp;</label>
+                <input class="form-check-input align-middle" type="color" id="darkDark">
+                <label class="form-check-label align-middle" for="darkDark" id="darkDarkLabel">dark&nbsp;&nbsp;&nbsp;</label>
+                <input class="form-check-input align-middle" type="color" id="darkDarker">
+                <label class="form-check-label align-middle" for="darkDarker" id="darkDarkerLabel">darker</label>
+              </div>
+              <div>
+                <input class="form-check-input align-middle" type="color" id="darkFontLight">
+                <label class="form-check-label align-middle" for="darkFontLight" id="darkFontLightLabel">font light&nbsp;&nbsp;&nbsp;</label>
+                <input class="form-check-input align-middle" type="color" id="darkFontDark">
+                <label class="form-check-label align-middle" for="darkFontDark" id="darkFontDarkLabel">font dark</label>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-6">
+              <h6 id="lectureRoomTitle"></h6>
+              <div class="my-1">
+                <input class="form-check-input" type="checkbox" id="weekAllCheck">
+                <label class="form-check-label" for="weekAllCheck" id="weekAllLabel"></label>
+              </div>
+              <div class="my-1">
+                <input class="form-check-input" type="checkbox" id="enterToWeekCheck">
+                <label class="form-check-label" for="enterToWeekCheck" id="enterToWeekLabel"></label>
+              </div>
+              <div class="my-1">
+                <input class="form-check-input" type="checkbox" id="studentListCheck">
+                <label class="form-check-label" for="weekAllCheck" id="studentListLabel"></label>
+              </div>
+              <div class="my-1">
+                <input class="form-check-input" type="checkbox" id="weekSliderCheck">
+                <label class="form-check-label" for="weekAllCheck" id="weekSliderLabel"></label>
+              </div>
+              <!-- <div class="col-6">
+                <input class="form-check-input" type="checkbox" id="downloadCheck">
+                <label class="form-check-label" for="downloadCheck" id="downloadLabel"></label>
+              </div> -->
+            </div>
+            <div class="col-6">
+              <h6 id="miscellaneousTitle"></h6> 
+              <div class="my-1">
+                <input class="form-check-input" type="checkbox" id="darkAtNightCheck">
+                <label class="form-check-label" for="darkAtNightCheck" id="darkAtNightLabel"></label>
+              </div>
+              <div class="my-1">
+                <input class="form-check-input" type="checkbox" id="redirectToLoginCheck">
+                <label class="form-check-label" for="redirectToLoginCheck" id="redirectToLoginLabel"></label>
+              </div>
+              <div class="my-1">
+                <input class="form-check-input" type="checkbox" id="cleanNotificationCheck">
+                <label class="form-check-label" for="cleanNotificationCheck" id="cleanNotificationLabel"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-2" style="font-size: small;">
+          <span class="align-middle float-start" style="margin-right: 15px;">
+            <a href="#" style="text-decoration: none;" id="kor">KOR</a> | <a href="#" style="text-decoration: none;" id="eng">ENG</a>
+          </span>
+          <span class="align-middle float-start" id="references" style="margin-right: 15px;"></span>
+          <span class="align-middle float-start" id="versions"></span>
+          <span class="align-middle float-end" style="padding-bottom: 10px;" id="writtenBy"></span>
+        </div>
+      </div>
+      <!-- <div class="card links shadow-sm" id="links">
+        <div class="card-body">
+          <a id="email" href="#"><img src="img/email.svg" alt="email icon" style="height: 20px;"></a>&nbsp;&nbsp;&nbsp;
+          <a id="github" href="#"><img src="img/github.svg" alt="github icon" style="height: 20px;"></a>&nbsp;&nbsp;&nbsp;
+          <a id="instagram" href="#"><img src="img/instagram.svg" alt="instagram icon" style="height: 20px;"></a>
+        </div>
+      </div> -->
+      <script type="text/javascript" src="shared.js"></script>
+      <script type="text/javascript" src="popup.js"></script>
+    </body>
+</html>

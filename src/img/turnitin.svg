@@ -3,8 +3,10 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 41 41" style="enable-background:new 0 0 41 41;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#969696;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#969696;stroke-width:2.7;stroke-miterlimit:10;}
 </style>
-<path class="st0" d="M23.8,10.6v-9l11.6,11.7h-8.9C25,13.3,23.8,12.1,23.8,10.6z"/>
-<path class="st0" d="M35.4,13.8v22.9c0,1.5-1.2,2.7-2.7,2.7H8.3c-1.5,0-2.7-1.2-2.7-2.7V4.3c0-1.5,1.2-2.7,2.7-2.7h15"/>
+<path class="st0" d="M10,15V4.9c0-1.8,1.4-3.2,3.2-3.2H32v25.9c0,1.8-1.4,3.2-3.2,3.2h-5.3"/>
+<polyline class="st0" points="11.2,18.9 21.2,18.9 19.7,29 "/>
+<polyline class="st0" points="0,41 0,41 0,41 "/>
+<path class="st0" d="M15.1,39.3c-4.1-0.5-5.3-2.1-5.6-2.7c-1.8-3.4,2.1-10.2,10.6-16.5"/>
 </svg>

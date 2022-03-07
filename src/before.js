@@ -12,20 +12,22 @@ function dayOfYear(now) {
 }
 // Return minutes passed since start of day
 function minuteOfDay() {
-    return (new Date()).getHours()*60 + (new Date()).getMinutes();
+    return (new Date()).getHours() * 60 + (new Date()).getMinutes();
 }
 // Approximate time of sunrise and sunset; interpolate between max and min time (ref. region: Daejeon, South Korea)
 function sun(t) {
-    var temp = 1 - Math.abs(dayOfYear(new Date())-133) / 133;
-    var sunriseMin = 312, sunriseMax = 462;
-    var sunsetMin = 1035, sunsetMax = 1192;
-    if(t=="rise") return sunriseMin + (1-temp) * (sunriseMax-sunriseMin);
-    else if (t=="set") return sunsetMin + temp * (sunsetMax-sunsetMin);
+    var temp = 1 - Math.abs(dayOfYear(new Date()) - 133) / 133;
+    var sunriseMin = 312,
+        sunriseMax = 462;
+    var sunsetMin = 1035,
+        sunsetMax = 1192;
+    if (t == "rise") return sunriseMin + (1 - temp) * (sunriseMax - sunriseMin);
+    else if (t == "set") return sunsetMin + temp * (sunsetMax - sunsetMin);
 }
 
-var settingsKeys = Object.keys(settings);
+// var settingsKeys = Object.keys(settings);
 
-if(document.getElementById("stylesEl")) document.head.removeChild(document.getElementById("stylesEl"));
+if (document.getElementById("stylesEl")) document.head.removeChild(document.getElementById("stylesEl"));
 
 chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
     settingsKeys.forEach(key => {
@@ -35,32 +37,50 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
     var href = window.location.href;
 
     // Automatic redirection to login page
-    if(settings.redirectToLoginCheck && pageIs("landing")) window.location.href = "https://klms.kaist.ac.kr/sso2/login.php";
+    if (settings.redirectToLoginCheck && pageIs("landing")) window.location.href = "https://klms.kaist.ac.kr/sso2/login.php";
 
     // Automatic navigation to week "ALL"
-    if(settings.weekAllCheck && pageIs("roomWeekNone")) window.location.href += "&section=0";
+    if (settings.weekAllCheck && pageIs("roomWeekNone")) window.location.href += "&section=0";
 
     var styles = "";
 
-    if(settings.themeName!="original") {
-        var now = minuteOfDay();
-        var isNight = (now <= sun("rise")) || (now >= sun("set"));
-        console.log(isNight ? "해가 졌음" : "해가 떠있음");
-        var themeName = (((settings.darkAtNightCheck && isNight) || settings.themeName=="dark") ? "dark" : settings.themeName );
-        var isDark = themeName=="dark";
-    
-        var light = getTheme(themeName).light;
-        var dark = getTheme(themeName).dark;
-        var darker = getTheme(themeName).darker;
-        var lighter, lightFont, darkFont;
-        if(isDark) {
-            lighter = getTheme(themeName).lighter;
-            lightFont = getTheme(themeName).lightFont;
-            darkFont = getTheme(themeName).darkFont;
-        }
-        
+    if (settings.themeRadios != "original") {
         if (href.startsWith("https://klms.kaist.ac.kr/")) {
-            var lightStyles = `
+            const now = minuteOfDay();
+            const isNight = (now <= sun("rise")) || (now >= sun("set"));
+            // console.log(isNight ? "해가 졌음" : "해가 떠있음");
+            const themeRadios = (((settings.darkAtNightCheck && isNight) || settings.themeRadios == "dark") ? "dark" : settings.themeRadios);
+            const isDark = themeRadios == "dark";
+            const themeObject = getTheme(themeRadios);
+            var lighter, light, dark, darker, lightFont, darkFont;
+            if (isDark) {
+                if (settings.overrideDarkCheck) {
+                    lighter = settings.darkLighter;
+                    light = settings.darkLight;
+                    dark = settings.darkDark;
+                    darker = settings.darkDarker;
+                    lightFont = settings.darkFontLight;
+                    darkFont = settings.darkFontDark;
+                } else {
+                    lighter = themeObject.lighter;
+                    light = themeObject.light;
+                    dark = themeObject.dark;
+                    darker = themeObject.darker;
+                    lightFont = themeObject.lightFont;
+                    darkFont = themeObject.darkFont;
+                }
+            } else {
+                if (settings.overrideLightCheck) {
+                    light = settings.lightLight;
+                    dark = settings.lightDark;
+                    darker = settings.lightDarker;
+                } else {
+                    light = themeObject.light;
+                    dark = themeObject.dark;
+                    darker = themeObject.darker;
+                }
+            }
+            const lightStyles = `
             header.ks-header,  .main-course-list>li .bt, .course-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .course-info .course-bt, .progress-wrap .progressbar span, .pagination li.active a, .btn-primary, .course-slider .swiper-slide>h6 .bt.point, .btn-area.t-center .bt, .modal .modal-dialog .modal-content .modal-header, .manual-wrap .manual-hd, .study-wrap .study-hd, #wrap .group .lnb .m-header, .m-menu .m-header, .course-slider.bg-white .swiper-slide h6, .path-mod-quiz #mod_quiz_navblock .qnbutton.thispage, #page-calendar-view .calendartable tbody tr td.today, #page-calendar-view.path-calendar .maincalendar .calendarmonth ul li .badge.badge-circle.calendar_event_course, .course-slider .swiper-slide>h6, .layerpop-wrap .layerpop .pop-title, .moodle-dialogue-base .moodle-dialogue-wrap .moodle-dialogue-hd.yui3-widget-hd, .quizattempt .singlebutton .btn, .path-mod-quiz .othernav a.endtestlink, .btn.atto_image_urlentrysubmit, .btn.btn-secondary.submit, .nav-pills .nav-link.active, .nav-pills .show>.nav-link, .custom-control-input:checked~.custom-control-label::before, #page-course-view-kaistweeks button.btn.btn-link.text-reset {
                 background-color: ${light} !important;
                 border-color: ${light};
@@ -79,7 +99,7 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
             .quick-menu, header.ks-header .fr>ul>li.login-time>a {
                 background-color: ${darker};
             }
-            .pagination li:not(.active):hover a, .pagination .m-auto a:hover {
+            .pagination li:not(.active):hover a, .pagination .m-auto a:hover, .icon-box a:hover {
                 color: ${light};
                 border-color: ${light};
             }
@@ -100,7 +120,18 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
                 }
                 span>img {
                     height: 30px;
-                    margin-right: 5px;
+                    margin: 0 5px 0 5px;
+                }
+                .courseboard_view .info .files ul li {
+                    display: flex;
+                    margin-bottom: 3px;
+                }
+                .courseboard_view .info .files ul li img {
+                    max-width: 16px;
+                    margin: 0 7px;
+                }
+                .courseboard_view .info .files ul li a {
+                    text-align: left;
                 }
                 header.ks-header .hd-logo {
                     padding: 0;
@@ -227,6 +258,42 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
                 .m-fixed-menu>ul li.btn-menu>a {
                     background: url(${chrome.runtime.getURL(isDark ? "img/icon_m_plus_dark.svg" : "img/icon_m_plus_light.svg")}) no-repeat center;
                 }
+                .icon-box .assign {
+                    background: url(${chrome.runtime.getURL("img/text.svg")}) no-repeat center;
+                }
+                .icon-box .choice {
+                    background: url(${chrome.runtime.getURL("img/checkbox.svg")}) no-repeat center;
+                }
+                .icon-box .feedback {
+                    background: url(${chrome.runtime.getURL("img/peer_review.svg")}) no-repeat center;
+                }
+                .icon-box .folder {
+                    background: url(${chrome.runtime.getURL("img/folder.svg")}) no-repeat center;
+                }
+                .icon-box .forum {
+                    background: url(${chrome.runtime.getURL("img/forum.svg")}) no-repeat center;
+                    display: inline-block;
+                    -webkit-background-size: 24px auto;
+                    background-size: 24px auto;
+                    width: 24px;
+                    height: 24px
+                }
+                .icon-box .liveaction {
+                    background: url(${chrome.runtime.getURL("img/live_action.svg")}) no-repeat center;
+                }
+                .icon-box .vod {
+                    background: url(${chrome.runtime.getURL("img/video.svg")}) no-repeat center;
+                }
+                .icon-box .quiz {
+                    background: url(${chrome.runtime.getURL("img/quiz.svg")}) no-repeat center;
+                }
+                .icon-box .zoom {
+                    background: url(${chrome.runtime.getURL("img/zoom.svg")}) no-repeat center;
+                }
+                .course-content ul .section.main .section.img-text>li .actions .status.ic-alert {
+                    background: url(${chrome.runtime.getURL("img/warning.svg")}) no-repeat right center;
+                    background-size: 18px;
+                }
                 header.ks-header .fr>ul>li.alram .tooltip-wrap>a>span {
                     visibility: hidden;
                 }
@@ -235,46 +302,6 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
                 }
                 .activity-pop-list>li>div .pop-img-wrap {
                     border: none;
-                }
-                .week-slider .swiper-container .swiper-slide:not(:last-child):after {
-                    margin: 0 3px 0 3px;
-                }
-
-                .week-slider.ml-3 {
-                    overflow: scroll;
-                }
-                .week-slider::before, .week-slider::after {
-                    content: none !important;
-                }
-                .week-slider .swiper-button-prev, .week-slider .swiper-button-next {
-                    background: none;
-                    border: none;
-                    width: 0;
-                    height: 0;
-                }
-                .week-slider {
-                    padding: 4px 0 4px 0;
-                }
-                .main-course-list>li {
-                    display: inline-block;
-                    margin-bottom: 10px;
-                    margin-right: 8px;
-                    padding: 20px;
-                }
-                // .main-course-list>li {
-                //     width: calc(49.5% - 4px);
-                // }
-                .main-course-list>li {
-                    width: calc(33.33% - 8px);
-                }
-                // .main-course-list>li:nth-child(even) {
-                //     margin-right: 0;
-                // }
-                .main-course-list>li:nth-child(3n) {
-                    margin-right: 0;
-                }
-                .main-course-list>li>a.bt {
-                    display: none;
                 }
             `
             var darkStyles = `
@@ -353,17 +380,72 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
                 }
 
             `;
+            
             styles = styles + commonStyles + (isDark ? darkStyles : lightStyles);
+
+            styles += settings.weekSliderCheck ? `
+                .week-slider .swiper-container .swiper-slide:not(:last-child):after {
+                    margin: 0 3px 0 3px;
+                }
+                .week-slider.ml-3 {
+                    overflow: scroll;
+                }
+                .week-slider::before, .week-slider::after {
+                    content: none !important;
+                }
+                .week-slider .swiper-button-prev, .week-slider .swiper-button-next {
+                    background: none;
+                    border: none;
+                    width: 0;
+                    height: 0;
+                }
+                .week-slider {
+                    padding: 4px 0 4px 0;
+                }
+            ` : "";
+            
+            styles += settings.compactViewCheck ? `
+                .main-course-list>li {
+                    display: inline-block;
+                    margin-bottom: 10px;
+                    margin-right: 8px;
+                    padding: 20px;
+                }
+                // .main-course-list>li {
+                //     width: calc(49.5% - 4px);
+                // }
+                .main-course-list>li {
+                    width: calc(33.33% - 8px);
+                }
+                // .main-course-list>li:nth-child(even) {
+                //     margin-right: 0;
+                // }
+                .main-course-list>li:nth-child(3n) {
+                    margin-right: 0;
+                }
+                .main-course-list>li>a.bt {
+                    display: none;
+                }
+            ` : "";
+
+            styles += settings.panelButtonCheck ? `
+                .main-course-list>li:hover {
+                        background-color: ${isDark ? "#2e2e2e" : "#F6F6F6"} !important;
+                }
+            ` : "";
         }
     }
 
     if (href.startsWith("https://cais.kaist.ac.kr/")) {
-        styles += `
-            #courseRegistrationList > div:nth-child(9) {
-                // height: 1000px !important;
-                height: auto !important;
-            }
-        `;
+        if (settings.courseHeightRadios!="original") {
+            styles += `
+                #courseRegistrationList > div:nth-child(9) {
+                    height: ${settings.courseHeightRadios=="full" ? "auto" : settings.courseHeight+"px"} !important;
+                }
+            `;
+        }
+        
+        console.log(styles);
     }
 
     if (styles) {
@@ -374,3 +456,5 @@ chrome.storage.sync.get(settingsKeys, function(syncedSettings) {
     }
 
 });
+
+// https://klms.kaist.ac.kr/theme/oklass39/pix/images/icon_question.png

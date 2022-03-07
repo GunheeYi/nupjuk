@@ -1,0 +1,118 @@
+<body>
+    
+<style>
+    body {
+        font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    }
+    header {
+
+    }
+    .logo {
+        height: 28px;
+        /* transform: translateY(3px); */
+        vertical-align: -10px;
+    }
+    .titles {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .title {
+        font-weight: 500; font-size: 22px;
+        display: inline;
+    }
+    .version, .warning {
+        font-weight: 500; font-size: 12px;
+        display: inline;
+    }
+    h4 {
+        /* font-size:  */
+        font-weight: 500;
+        margin-top: 15px;
+        margin-bottom: 8px;
+    }
+    .flex {
+        display: flex;
+    }
+    .flex-1 {
+        flex: 1;
+    }
+    footer {
+        font-size: 14px;
+    }
+    input[type=checkbox] {
+        vertical-align: middle;
+    }
+    label {
+        vertical-align: middle;
+        font-size: 14px;
+    }
+    a {
+        text-decoration: none;
+        color: #0d6efd;
+    }
+    a:hover {
+        color: #0a58ca;
+    }
+    .text {
+        font-size: 14px;
+    }
+</style>
+
+<header>
+    <img src="img/nupjuk48.png" alt="Nupjuk Logo" class="logo">
+    <div class="titles">
+        <span class="title">Nupjuk!</span>
+        <span class="version">v2.2.0</span>
+    </div>
+</header>
+<div class="content">
+    <h4><span>동영상</span>&nbsp;<span class="warning">⚠️ 동영상 임의 조작에 따른 결과의 모든 책임은 사용자에게 있습니다.</span></h4>
+    <div class="text">
+        <div class="flex">
+            <div class="flex-1">
+                <input class="form-check-input" type="checkbox" id="jumpCheck">
+                <label class="form-check-label" for="jumpCheck" id="jumpLabel"></label>
+            </div>
+            <div class="flex-1">
+                ±
+                <input type="text" id="jumpSeconds" class="input-small" style="width:40px">
+                <label for="jumpSeconds" id="jumpSecondsLabel"></label>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex-1">
+                <input class="form-check-input" type="checkbox" id="longJumpCheck">
+                <label class="form-check-label" for="longJumpCheck" id="longJumpLabel"></label>
+            </div>
+            <div class="flex-1">
+                ±
+                <input type="text" id="longJumpSeconds" class="input-small" style="width:40px">
+                <label for="longJumpSeconds" id="longJumpSecondsLabel"></label>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex-1">
+                <input class="form-check-input" type="checkbox" id="speedControlCheck">
+                <label class="form-check-label" for="speedControlCheck" id="speedControlLabel"></label>
+            </div>
+            <div class="flex-1">
+                ±
+                <input type="text" id="speedControlUnit" class="input-small" style="width:40px">
+                <label for="speedControlUnit">×</label>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="flex">
+    <span class="">
+        <a href="#" id="kor">KOR</a> | <a href="#" id="eng">ENG</a>
+    </span>
+    <span class="" id="references" style="">외부자료 출처</span>
+    <span class="" id="versions">업데이트 이력</span>
+    <span class="" id="writtenBy" style="margin-left: auto;">2022 이건희</span>
+</footer>
+
+<!-- <script type="text/javascript" src="shared.js"></script>
+<script type="text/javascript" src="popup.js"></script> -->
+
+</body>
