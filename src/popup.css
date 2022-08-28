@@ -107,3 +107,8 @@ sup {
         translateX(480px);
     position: absolute;
 }
+
+.deprecated {
+    text-decoration: line-through;
+    color: #555;
+}

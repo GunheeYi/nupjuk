@@ -298,7 +298,7 @@ window.onload = function() {
         themes.forEach(theme => {
             document.getElementById("themeSelection").innerHTML += `
                 <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="radio" class="btn-check" id="radio${theme.titleEng}" name="themeRadios" value="${theme.name}" id="${theme.name}">
+                    <input type="radio" class="btn-check" id="radio${theme.titleEng}" name="themeRadios" value="${theme.name}" id="${theme.name}" disabled>
                     <label class="btn btn-outline-primary themeLabel" for="radio${theme.titleEng}" title="${settings.language=="kor" ? theme.titleKor : theme.titleEng}" style="width:25px; height:25px; background-color: ${theme.light}; border-color: ${theme.light};"></label>
                 </div>
             `
